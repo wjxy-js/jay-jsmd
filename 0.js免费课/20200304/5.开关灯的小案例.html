@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+	<link rel="stylesheet" href="reset.min.css">
+	<style>
+		html,
+		body {
+			height: 100%;
+			overflow: hidden;
+		}
+
+		button {
+			padding: 0 20px;
+			line-height: 35px;
+		}
+	</style>
+</head>
+
+<body style="background-color: white;">
+	<button id="lampBtn">关灯</button>
+
+	<!-- IMPORT JS -->
+	<script>
+		/* 
+		 * 要实现的思路和功能
+		 *   1.默认页面是白色的（开灯状态），按钮显示的文字是关灯
+		 *   2.点击按钮
+		 *     1）获取当前开关灯的状态（看BODY的背景颜色）
+		 *     2）如果当前是开灯状态（BODY的背景颜色是白色），我们让BODY背景颜色变为黑色（关灯状态），按钮中显示开灯
+		 *     3）如果当前是关灯状态（BODY的背景颜色是黑色），我们让BODY背景颜色变为白色（开灯状态），按钮中显示关灯
+		 */
+		//  1.想要操作谁就先获取谁 BODY和按钮
+		let lampBtn = document.getElementById('lampBtn'); //=>获取按钮
+		let body = document.body; //=>获取BODY
+
+		// 2.事件绑定：点击按钮的时候做什么事情
+		lampBtn.onclick = function () {
+			/* 元素.style.xxx=xxx：设置元素的行内样式，元素.style.xxx 不赋值的情况下是获取元素的行内样式（记住是行内样式：不管在哪设置的样式，只要不是在行内上设置，都获取不到） */
+			// 获取BODY的背景颜色
+			let bg = body.style.backgroundColor;
+			if (bg === 'white') {
+				// 当前处于开灯状态
+				body.style.backgroundColor = "black";
+				lampBtn.innerText = "开灯";
+			} else {
+				// 当前处于关灯状态
+				body.style.backgroundColor = "white";
+				lampBtn.innerText = "关灯";
+			}
+		};
+	</script>
+</body>
+
+</html>

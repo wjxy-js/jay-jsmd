@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		// number数字类型
+		let n = 10;
+		n = 10.5;
+		n = -10;
+		n = 0;
+		n = NaN; //=>NaN：not a number 非有效数字
+		n = Infinity; //=>正/负无穷大  -Infinity   [ɪnˈfɪnəti]
+
+		// string字符串：基于单引号、双引号、反引号（TAB上面的撇）包起来的都是字符串
+		let str = '';
+		str = '19';
+		str = "珠峰培训";
+		str = `我是ES6中新增的模板字符串，有助于字符串的拼接`;
+		str = '[object Object]';
+
+		// boolean布尔：true / false
+		let boo = true;
+		boo = false;
+
+		// 空
+		let nu = null;
+		nu = undefined;
+		let un; //=>默认值就是undefined
+
+		// Symbol：每一个Symbol()都是一个唯一值
+		let x = Symbol('珠峰');
+		let y = Symbol('珠峰');
+		console.log(x == y); //=>false
+	</script>
+
+	<script>
+		// object普通对象：大括号包起来，里面有零到多组属性名和属性值（键值对），这些属性名和属性值可以描述当前对象的特征（键:值，多组键值对用逗号分隔）
+		let obj = {
+			name: '珠峰培训',
+			age: 10,
+			teachers: 30
+		};
+
+		// Array数组对象：中括号包起来，逗号分隔数组中每一项的值（每一项的值可以是任意类型）
+		let arr = [10, '字符串', true, null];
+
+		// RegExp正则对象：两个斜杠包起来一大堆你看不懂的符号就是正则 O(∩_∩)O哈哈~
+		let reg = /$[+-]?(\d|([0-9]\d+))(\.\d+)?^/;
+
+		// function函数
+		function func(x, y) {
+			let total = x + y;
+			return total;
+		}
+		
+		// ES6中的 Arrow Function 箭头函数
+		let fn = () => {
+
+		};
+	</script>
+</body>
+
+</html>

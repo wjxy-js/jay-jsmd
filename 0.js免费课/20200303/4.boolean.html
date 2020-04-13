@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * 如何把其它数据类型转换为布尔类型 
+		 *   + Boolean([value])
+		 *   + ![value] 把指定的值转换为布尔类型后取反
+		 *   + !![value] 取反再取反，相当于没有取反，只是把它转换为布尔类型值
+		 * 规则：只有 “0/NaN/null/undefined/空字符串” 最后是false，其余的都是true
+		 */
+		// console.log(!!1); //=>true
+		// console.log(!1); //=>false
+
+		// console.log(!!-1); //=>true
+		// console.log(!!0); //=>false
+		// console.log(!!undefined); //=>false
+		// console.log(!!Number('12px')); //=>Number('12px')->NaN  false
+		// console.log(!![]); //=>true
+		// console.log(!!''); //=>false
+		// console.log(!!{}); //=>true
+
+		/* 条件判断中，每一个条件最后一定是true/false */
+		// if (1 == 1) {}
+		// if (1) {
+		// 	//=>写一个值，也是要把这个值转换为布尔，然后校验程序的真假
+		// }
+		// if (3 + '3px') {} //=>3 + '3px' =>'33px'  真
+		// if (3 - '3px') {} //=>3 - '3px' =>NaN   假
+	</script>
+</body>
+
+</html>

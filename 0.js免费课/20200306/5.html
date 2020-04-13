@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+	<link rel="stylesheet" href="reset.min.css">
+	<style>
+
+
+	</style>
+</head>
+
+<body>
+	<!-- <input type="text" id="inpBox">
+	<button id="submit">提交</button> -->
+
+	<!-- IMPORT JS -->
+	<script>
+		/* let inpBox = document.getElementById('inpBox'),
+			submit = document.getElementById('submit');
+		submit.onclick = function () {
+			// 获取文本框中的内容（默认是字符串，需要转换为数字）
+			let val = inpBox.value;
+			val = Number(val);
+			if (isNaN(val) || val < 1000 || val > 9999) {
+				alert('输入的年份必须合法！');
+				return; //=>遇到RETURN下面代码就不在执行了
+			}
+			if ((val % 4 === 0 && val % 100 !== 0) || val % 400 === 0) {
+				alert(`${val}年是闰年！`);
+			} else {
+				alert(`${val}年是平年！`);
+			}
+		} */
+	</script>
+
+	<script>
+		/* let inpBox = document.getElementById('inpBox'),
+			submit = document.getElementById('submit');
+		submit.onclick = function () {
+			let val = inpBox.value;
+			val = Number(val);
+			if (isNaN(val)) {
+				alert('请输入有效数字！');
+				return;
+			}
+			if (val % 2 === 0) {
+				alert(`${val}是偶数！`);
+			} else {
+				alert(`${val}是奇数！`);
+			}
+		} */
+	</script>
+
+	<script>
+		/* let inpBox = document.getElementById('inpBox'),
+			submit = document.getElementById('submit');
+		submit.onclick = function () {
+			let val = inpBox.value;
+			val = Number(val);
+			if (isNaN(val)) {
+				alert('请输入有效分数！');
+				return;
+			}
+
+			if (val >= 90) {
+				alert(`优秀！`);
+			} else if (val >= 80 && val < 90) {
+				alert(`中等`);
+			} else if (val >= 70 && val < 80) {
+				alert(`及格`);
+			} else {
+				alert(`不及格`);
+			}
+		} */
+	</script>
+
+
+	<!-- 工作年限：<input type="text" id="workYear">
+	<br>
+	工作薪酬：<input type="text" id="workMoney">
+	<br>
+	<button id="submit">提交</button> -->
+
+	<script>
+		/* let workYear = document.getElementById('workYear'),
+			workMoney = document.getElementById('workMoney'),
+			submit = document.getElementById('submit');
+		submit.onclick = function () {
+			let year = workYear.value,
+				money = workMoney.value;
+			year = Number(year);
+			money = Number(money);
+
+			// 最好把YEAR和MONEY做非有效数字的校验
+			if (isNaN(year) || isNaN(money)) {
+				alert('输入有误，请查证');
+				return;
+			}
+
+			let result = 0; //=>设置初始值
+			if (year === 0) {
+				if (money >= 8000) {
+					result = money * 1.2;
+				} else {
+					result = money * 1;
+				}
+			} else if (year === 1) {
+				if (money >= 10000) {
+					result = money * 1.7;
+				} else {
+					result = money * 1.5;
+				}
+			} else {
+				if (money >= 12000) {
+					result = money * 3.2;
+				} else {
+					result = money * 3;
+				}
+			}
+			alert(`你应该拿到的年终奖是：￥${result.toFixed(2)}`);
+		} */
+	</script>
+
+
+	汽油型号：<select id="modelInp">
+		<option value="95" selected>#95</option>
+		<option value="97">#97</option>
+	</select>
+	<br>
+	汽油升数：<input type="text" id="priceInp">
+	<br>
+	<button id="submit">提交</button>
+
+	<script>
+		let modelInp = document.getElementById('modelInp'),
+			priceInp = document.getElementById('priceInp'),
+			submit = document.getElementById('submit');
+		submit.onclick = function () {
+			let model = modelInp.value,
+				price = priceInp.value;
+			model = Number(model);
+			price = Number(price);
+			if (isNaN(model) || isNaN(price)) {
+				alert('输入有误，请查证');
+				return;
+			}
+			let result = model === 95 ? (price >= 20 ? price * 5.9 : price * 6) : (price >= 30 ? price * 6.95 : price *
+			7);
+			/* if (model === 95) {
+				if (price >= 20) {
+					result = price * 5.9;
+				} else {
+					result = price * 6;
+				}
+			} else {
+				if (price >= 30) {
+					result = price * 6.95;
+				} else {
+					result = price * 7;
+				}
+			} */
+			alert(`支付总价：￥${result.toFixed(2)}`);
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		// var a = 'abc' + 123 + 456;
+		/*
+		 * +在JS中除了数学运算还有字符串拼接
+		 *     'abc' + 123 => 'abc123'
+		 *     'abc123' + 456 => 'abc123456'
+		 */
+		// var b = '456' - '123';
+		/*
+		 * -/*%这些运算符都是数学运算（要把其它类型值基于Number()转换为数字再进行运算）
+		 *   + 字符串中只要出现非有效数字字符结果就是NaN，空字符串变为0
+		 *   + true 1   false 0   null 0   undefined NaN   symbol不能转
+		 *   + 对象是先转换为字符串 toString，然后在转换为数字
+		 * 456 - 123 => 333
+		 */
+		// var c = 100 + true + 21.2 + null + undefined + "Tencent" + [] + null + 9 + false;
+		/* 
+		 * 100 + true => 101
+		 * 101 + 21.2 => 122.2
+		 * 122.2 + null => 122.2
+		 * 122.2 + undefined => NaN
+		 * NaN + 'Tencent' => 'NaNTencent'
+		 * 'NaNTencent' + ... 都是字符串拼接了  => 'NaNTencentnull9false'
+		 */
+		// console.log(a, b, c);
+	</script>
+
+	<script>
+		/* // parseInt 是把一个字符串转换为数字（如果值不是字符串，也要先转换为字符串），从字符串最左侧开始查找，把找到的有效数字字符转换为数字，一旦遇到一个非有效数字字符，则停止向后查找（不管后面是否还有数字都不在找了）
+		var str = 'abc123';
+		var num = parseInt(str); //=>NaN
+		if (num == NaN) { //=> NaN==NaN 不相等，NaN和谁都不相等（包括自己）
+			alert(NaN);
+		} else if (num == 123) {  //=>NaN==123 不成立
+			alert(123);
+		} else if (typeof num == 'number') { //=> typeof NaN = "number"  //=>"number"==="number" 条件成立
+			alert('number'); 
+		} else {
+			alert('str');
+		}
+		// 在浏览器中弹出一个窗口  输出 "number" */
+	</script>
+
+	<script>
+		// 能输出"1"的有哪些 
+		// alert(1) //=>输出的是"1"，因为基于alert/confirm等输出结果，都会把内容转换为字符串再输出
+		// console.log(parseInt(1.3)) //=>parseInt('1.3')  =>1
+		// console.log(1) //=>1  console.log输出的内容还是原本的数据格式
+		// console.log(isNaN(1)) //=>false
+		// console.log(parseInt("1")) //=>1
+	</script>
+	<script>
+		// console.log(alert(1));
+		//=>先执行ALERT(输出"1")，然后把ALERT执行的返回结果再输出  =>undefined
+
+		// typeof undefined; //=>"undefined"  typeof返回的结果首先是一个字符串
+		// console.log(parseInt(undefined)); //=>parseInt(undefined) =>parseInt("undefined") =>NaN
+		// isNaN(undefined); //=>isNaN检测值，如果值不是数字类型，先基于Number把其转换为数字类型，然后再检测  =>Number(undefined) =>NaN =>isNaN(NaN) =>true
+	</script>
+	<script>
+		// isNaN(null) //=>isNaN(0) =>false
+		// isNaN(parseInt(null)) //=>parseInt("null") =>NaN =>isNaN(NaN) =>true
+		// Number(null) //=>0
+		// parseFloat(null) //=>parseFloat("null") =>NaN
+	</script>
+
+	<script>
+		// Number和parseInt在转换为数字的时候，规则是不一样的
+		// parseInt("") //=>NaN
+		// Number("") //=>0
+		// isNaN("") //=>需要先调用Number转换为数字再检测 isNaN(0)  =>false
+		// parseInt(null) //=>先把值转换为字符串 parseInt("null") =>NaN
+		// Number(null) //=>0
+		// isNaN(null) //=>isNaN(Number(null)) => isNaN(0) =>false
+		// parseInt("12px") //=>12
+		// Number("12px") //=>NaN
+		// isNaN("12px") //=>isNaN(Number('12px')) =>isNaN(NaN) =>true
+	</script>
+
+	<script>
+		// 知识点：在JS中，比较两个值是否相等，我们有以下几种方式
+		// 	  1. ==  相等（相等比较中，如果左右两边数据类型不同，则默认先转换为相同的数据类型，然后再进行比较）
+		//    2. ==== 绝对相等（需要保证左右两边数据类型和值都一样，才会相等，只要有一样不一样，结果都是不相等的）
+		//    3. Object.is ES6规范中新增加的方式（暂时不讲）
+		// console.log(10 == "10"); //=>TRUE  默认先把"10"->10，然后再比较
+		// console.log(10 === "10"); //=>FALSE
+		// console.log("10" === "10"); //=>TRUE
+
+		/* 
+		 * isNaN(NaN) == ""  条件是否成立 
+		 *   + isNaN(NaN) =>true
+		 *   + true==""  两个等于号比较，默认会转换数据类型（此处都转换为数字，再进行比较） => 1==0 条件是不成立的
+		 */
+		/* if (isNaN(NaN) == "") {
+			console.log("珠峰")
+		} else {
+			console.log("培训")
+		} */
+	</script>
+
+	<script>
+		/* var a = 0;
+		var b = a;
+		b++;
+		alert(a); //=>"0"
+		var o = {};
+		o.a = 0;
+		var b = o;
+		b.a = 10;
+		alert(o.a); //=>"10" */
+	</script>
+
+	<script>
+		/* let x = [1, 2, 3];
+		let y = x;
+		let z = [4, 5, 6];
+		y[0] = 10;
+		y = z;
+		z[1] = 20;
+		x[2] = z = 30;
+		console.log(x, y, z); */
+	</script>
+
+	<script>
+		let a = {
+			n: 1
+		};
+		let b = a;
+		a.x = a = {
+			n: 2
+		};
+		console.log(a.x);
+		console.log(b);
+	</script>
+</body>
+
+</html>

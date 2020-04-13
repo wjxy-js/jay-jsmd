@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>offset</title>
+</head>
+<body>
+    <script>
+    /*
+		 * offset：Get the left and up offsets of the current element from the body(获取当前元素距离body的左偏移量和上偏移量)
+		 *   @params
+		 *      element[element object]：Elements to operate on(当前要操作的类型)
+		 *   @return
+		 *      [object]：{top:xxx,left:xxx}
+		 * by zhufengpeixun on 2020/04/10
+		 */    
+        function offset(element){
+            // 1.首先获取当前元素的父参照物和其距离父参照物的偏移
+			let parent = element.offsetParent,
+				top = element.offsetTop,
+				left = element.offsetLeft;
+			// 2.循环依次向上查找父参照物（一直到找不到为止）
+			while (parent) {
+				// 加上父参照物的边框（非IE8浏览器中才加）
+				if (!/MSIE 8/.test(navigator.userAgent)) {
+					left += parent.clientLeft;
+					top += parent.clientTop;
+				}
+				// 加上父参照物的偏移值
+				left += parent.offsetLeft;
+				top += parent.offsetTop;
+				// 继续向上查找
+				parent = parent.offsetParent;
+			}
+			// 3.把查找的结果返回
+			return {
+				// top:top 
+				top,
+				left
+			};
+        }
+        // 兼容问题：在标准的IE8浏览器中，偏移值是当前元素外边框距离父参照物的外边框的距离（其它浏览器都是距离父参照物内边框），所以我们计算偏移值的时候，如果是IE8浏览器，则边框不需要在加了
+		// navigator.userAgent获取当前浏览器的版本信息
+    </script>
+</body>
+</html>

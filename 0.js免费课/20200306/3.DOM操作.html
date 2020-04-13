@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<div class="box" id="box" style="width: 500px;">
+		<h2 class="title">珠峰课程体系</h2>
+		<ul>
+			<li>HTML5+CSS3</li>
+			<li>JavaScript（ES6）基础知识、核心原理、项目实战、组件封装、设计模式等</li>
+			<li>AJAX和HTTP</li>
+			<li>Vue/React/小程序开发的全家桶（基础、源码、实战）</li>
+			<li>Webpack/Node/Git等常用的工具类或者全栈化</li>
+		</ul>
+	</div>
+	学会这些找一份工作，SO EASY！
+
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * JS的三部分组成：
+		 *   ECMAScript 3 / 6
+		 *   DOM：document object model 文档对象模型（提供一系列的属性和方法，让我们能操作页面中的DOM元素->简单理解为操作页面中的HTML标签）
+		 *   BOM
+		 */
+
+		/* 
+		 * 获取DOM元素 
+		 *   document.getElementById([ID]) 基于元素的ID获取到这个元素（一个元素对象）
+		 *   document.body 获取页面中的BODY元素
+		 *   document.getElementsByTagName([标签名]) 根据标签名获取到页面中（指定容器中）所有的元素标签集合 （一组元素集合）
+		 */
+		//=>基于JS获取到的DOM元素是“对象数据类型”值，里面包含很多浏览器自带的，用来操作元素的键值对
+
+		// 修改盒子中文字颜色样式的三种写法，哪一种可以？
+		/* let box = document.getElementById('box');
+		// box.style.color = 'red';
+
+		// let boxSty = box.style; //=>获取的是STYLE对应的对象  BBBFFF000
+		// boxSty.color = 'red';
+
+		let text = box.style.color; //=>获取的是color初始值''，基本类型值，直接存在栈内存中
+		text = 'red'; */
+	</script>
+
+	<script>
+		let box = document.getElementById('box');
+		let itemList = box.getElementsByTagName('li'); //=>获取BOX盒子中所有的LI =>获取的是HTMLCollection元素集合（他是一个类数组对象：结构和数组非常的相似，但是不是数组）
+		let title = box.getElementsByTagName('h2'); //=>获取BOX盒子中所有的H2 =>哪怕没有或者只有一项，获取到的依然是元素集合HTMLCollection
+
+		// 把LI实现奇数和偶数行变色（CSS中 :nth-child 可以搞定）
+		// 重复完成事情：分别拿到每一个LI元素对象，根据判断它是奇数行还是偶数行，给其设置不同的颜色
+		for (var i = 0; i < itemList.length; i++) {
+			// 每一次循环，基于变量i的值（等价于集合中对应的索引）获取到当前本轮循环要操作的那个LI
+			var itemLi = itemList[i];
+			/* if (i % 2 !== 0) {
+				// 索引奇数代表偶数行
+				itemLi.style.color = 'green';
+			} else {
+				itemLi.style.color = 'red';
+			} */
+
+			// itemLi.style.color = i % 2 !== 0 ? 'green' : 'red';
+
+			switch (i % 2) {
+				case 0:
+					itemLi.style.color = 'red';
+					break;
+				default:
+					itemLi.style.color = 'green';
+			}
+		}
+
+		/*
+		 * 第一行 奇数行  => 索引0  索引偶数
+		 * 第二行 偶数行  => 索引1  索引奇数
+		 * 第三行 奇数行  => 索引2  索引偶数
+		 * ....
+		 * 当前行的索引是奇数代表偶数行，当前行的索引是偶数，代表的是奇数行
+		 * 
+		 * x % 2 === 0 能被2整除的是偶数
+		 */
+	</script>
+</body>
+
+</html>

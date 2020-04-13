@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            
+        * offset : 获取当前元素距离body的左偏移量和上偏移量
+        * @params:当前要操作的类型
+        * @return [object]:{top:xxx,left:xxx}
+        */
+        function offset(element) {
+            //首先获取当前元素的父参照物和其距离父参照物的偏移
+            let parent = element.offsetParent,
+                top = element.offsetTop,
+                left = element.offsetLeft;
+                //循环一次向上查找父参照物(一直到找不到)
+            while (parent) {
+                //加上父参照物的边框
+                left +=parent.clientLeft;
+                top +=parent.clientTop;
+                //加上父参照物的偏移量
+                left +=parent.offsetLeft;
+                top +=parent.offsetTop;
+                //继续向上查找
+                    parent = parent.offsetParent;
+
+            }
+            return{
+                top,
+                left
+            }
+        }
+
+    </script>
+</body>
+
+</html>

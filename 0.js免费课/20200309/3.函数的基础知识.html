@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * 每一个函数都分为两部分
+		 *   1.创建函数
+		 *     function 函数名(形参){ 函数体 }
+		 *   2.执行函数
+		 *     函数名(实参)
+		 * 
+		 * 函数就是对实现某一个功能的具体封装，这样后期再想实现这个功能，直接的执行函数即可，无需重新编写代码（减少页面中冗余代码，提高代码重复使用率 =>“低耦合、高内聚”）
+		 */
+
+		/* function func() {
+			let total = 10 + 10;
+			console.log(total);
+		}
+		func(); //=>每执行一次会形成一个新的执行上下文
+		func(); */
+
+
+		//=================需求：求任意两个数的和
+		// 任意两个数：创建函数的时候，我们并不清楚要求那两个数的和，只有函数执行的时候告诉我们，我们才知道，此时我们需要定义相应的入口  => 入口在JS函数中被称为形参，“用来存储执行函数时，传递进来的信息的”，所以形参是变量
+		// => x和y都是形参变量
+		// => 函数执行的时候，传递进来的值会赋值给形参变量 => 传递的具体值在JS函数中被称为实参，“实参就是具体传递的值”  
+		// => 形参是创建函数时候设定的变量，实参是执行函数时候给形参传递的具体值
+		/* function sum(x, y) {
+			let total = x + y;
+			console.log(total);
+		} */
+
+		/* 	sum(10, 20); //=> x=10  y=20
+			sum(10); //=> x=10 y=undefined  设定形参变量，但是执行的时候没有传递对应的值，则形参默认值是undefined
+			sum(10, 20, 30); //=> x=10  y=20  第三个实参并没有对应的形参来接收（但是传递给函数了）
+			sum(10 + 20); //=> x=30  y=undefined
+			// sum(1 === 1 ? 'OK' : 'NO'); //=>也需要把三元表达式运算的结果作为实参传递给形参
+			// let age = 20;
+			// sum(age); //=> x=20  实参永远都应该是值，此处虽然写的AGE，但是他会把AGE变量的值拿到，然后传递给形参x，而不是把AGE本身传递过去   =>sum(20) 
+		*/
+
+		//=================任意数求和：不管传递几个实参值进来，我们都能求出对应的和
+		// 有一个具体的问题：基于形参变量来接收求和的数字已经不现实了，因为我们也不知道要传递多少个值，也就无法确定要定义多少个形参变量了
+		// 解决方案：
+		//   1. arguments函数内置的实参集合：不管我们设置与否形参，再或者是否传递了实参，ARGUMENTS始终都会存在（ES6箭头函数中没有ARGUMENTS）  =>只能出现在函数体中
+		//   2. 使用ES6中的剩余运算符
+		/* function sum() {
+			/!*
+			 * ARGUMENTS是一个类数组集合（类似数组，但是不是数组，和元素集合HTMLCollection类似）
+			 *   =>根据索引记录了每一个传递进来的实参信息（和是否定义形参变量没有关系，ARGUMENTS中包含了所有传递进来的实参信息）
+			 *   =>LENGTH属性代表传递实参的个数  
+			 *!/
+			//  循环ARGUMENTS中的每一项（每一个传递进来的实参），都累加给TOTAL，最后就能求出和了
+			let total = 0;
+			for (let i = 0; i < arguments.length; i++) {
+				// 把传递进来的实参信息都转换为数字：排除掉非有效数字或者字符串
+				let item = Number(arguments[i]);
+				if (!isNaN(item)) {
+					// 有效数字
+					total += item;
+				}
+			}
+			console.log(total);
+		}
+		sum(); //=>0
+		sum(10); //=>10
+		sum(10, 20); //=>30
+		sum(10, 20, 30, 40); //=>100
+		sum(10, 20, 'AA'); //=>30 过滤掉非有效的数字
+		sum(10, '20'); //=>30 如果是字符串，不能是字符串拼接，还应该是数学相加 */
+
+
+		/*  ==>以后会详细讲，现在看一眼
+		function sum(...args) {
+			// ...args：ES6中的剩余运算符，把传递进来的实参信息，都已数组的形式保存到ARGS变量中
+			let total = 0;
+			for (let i = 0; i < args.length; i++) {
+				let item = Number(args[i]);
+				if (!isNaN(item)) {
+					total += item;
+				}
+			}
+			console.log(total);
+		}
+		sum(10, 20, 30, 40); */
+	</script>
+
+	<script>
+		/* 
+		 * 当函数执行的时候，会形成一个全新的执行上下文（函数体中的代码会在这个上下文中运行），代码运行中，会把所有创建的变量存储到当前上下文的AO（变量对象）中，这些变量是“私有变量”：除当前上下文中可以使用这些变量的值，上下文以外的环境不能直接使用私有变量的值
+		 * 
+		 * 如果，外面想用当前上下文中的一些私有信息，则需要函数提供对应的出口，把信息提供给外面使用，而这个出口在JS函数中被称为“返回值 return”
+		 */
+		/* function sum() {
+			// total：当前上下文中的私有变量
+			let total = 0;
+			for (let i = 0; i < arguments.length; i++) {
+				let item = Number(arguments[i]);
+				if (isNaN(item)) {
+					continue;
+				}
+				total += item;
+			}
+
+			// 基于RETURN把TOTAL暴露给外面使用
+			// => RETURN后面放的一定是值：此处相当于把私有TOTA变量的值返回给外面使用 => RETURN 30;
+			return total;
+		}
+ */
+		// sum：函数本身    sum = 函数
+		// sum()：让函数执行，代表的是函数的返回值
+		// console.log(sum);
+		// console.log(sum());
+
+		// 创建一个变量N，用来接收函数执行完返回的值：RETURN后面的值
+		// 如果函数中没有写RETURN，默认的返回值是UNDEFINED
+		// let n = sum(10, '20', 'AA');
+		// console.log(n);
+		// console.log(total); //=>Uncaught ReferenceError: total is not defined 
+	</script>
+
+	<script>
+		/* function func(x) {
+			// 验证X是否为有效数字，如果不是有效数字，则不再继续执行下面的代码
+			if (isNaN(x)) {
+				return; //=>RETURN在函数中，除了返回信息外，还有告知函数体中下面代码不再执行的作用
+			}
+			let result = x % 2;
+			return result;
+		} */
+	</script>
+
+	<script>
+		// 实名函数：有函数名的
+		// function func() {}
+
+		//==============匿名函数 
+		// 1.函数表达式：把一个函数当做值赋值给变量或者事件绑定
+		/* document.body.onclick = function () {
+			// 此处就是匿名函数
+		};
+		let fn = function () {
+			// 也是匿名函数 fn代表这个函数 和 function fn类似
+		}; */
+
+		// 2.自执行函数：函数创建完就立即执行了
+		// =>(function(n){}) 创建函数，function包一个小括号是为了符合语法规范
+		// =>...(100) 把创建的函数执行
+		/* (function (n) {
+			// n的值是100
+		})(100) */
+
+		//==============箭头函数（ES6中新定义的创建函数的方式）
+		/* let func = (x, y) => {
+			// x和y是形参变量
+			// 大括号中还是函数体
+		};
+		func(10, 20); */
+
+		/*
+		//=>箭头函数可以简化函数编写的方式：如果函数体中只有一句RETURN，则可以忽略大括号和RETURN 
+		let sum = (x, y) => x + y;
+
+		function sum(x, y) {
+			return x + y;
+		} */
+
+		/* function func(x) {
+			return function (y) {
+				return x + y;
+			}
+		}
+		let func = x => y => x + y; */
+	</script>
+</body>
+
+</html>

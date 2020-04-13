@@ -1,0 +1,245 @@
+<!DOCTYPE html><html><head><title>JS基础课阶段复习</title><meta charset='utf-8'><link href='https://cdn.maxiang.io/res-min/themes/marxico.css' rel='stylesheet'><style>
+.note-content  {font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, Song, sans-serif;}
+
+</style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+
+
+<h2 id="js基础课阶段复习">JS基础课阶段复习</h2>
+
+
+
+<h3 id="一基础知识问答">一、基础知识问答</h3>
+
+
+
+<h4 id="1">1.</h4>
+
+<p>JS中的数据类型包括：</p>
+
+<ul><li><p>基本数据类型</p>
+
+<ul>
+<li><p>number</p></li>
+<li><p>string</p></li>
+<li><p>boolean</p></li>
+<li><p>null</p></li>
+<li><p>undefined</p></li>
+<li><p>symbol</p></li>
+<li><p>bigint</p></li></ul></li>
+<li><p>引用数据类型</p>
+
+<ul>
+<li><p>object</p>
+
+<ul>
+<li><p>{} 普通对象 </p></li>
+<li><p>[] 数组对象</p></li>
+<li><p>/^$/ 正则对象</p></li>
+<li><p>Math</p></li>
+<li><p>日期对象</p></li>
+<li><p>…</p></li></ul></li>
+<li><p>function</p></li></ul></li>
+</ul>
+
+<blockquote>
+  <p>基本数据类型是按照值操作，直接把值存储到栈内存中即可；引用数据类型的值是存储到堆内存中的，我们操作的都是堆内存的引用地址；</p>
+</blockquote>
+
+
+
+<h4 id="2">2.</h4>
+
+<p>JS中检测数据类型：</p>
+
+<ul><li><p>typeof </p></li>
+<li><p>instanceof</p></li>
+<li><p>constructor</p></li>
+<li><p>Object.prototype.toString.call()</p></li>
+</ul>
+
+
+
+<h4 id="3">3.</h4>
+
+<p>浏览器常用的内核：</p>
+
+<ul><li><p>webkit</p></li>
+<li><p>gecko</p></li>
+<li><p>trident</p></li>
+<li><p>blink</p></li>
+</ul>
+
+
+
+<h4 id="4">4.</h4>
+
+<p>JS中创建变量的几种常用方式：</p>
+
+<ul><li><p>var </p></li>
+<li><p>let / const</p></li>
+<li><p>function </p></li>
+<li><p>class</p></li>
+<li><p>import </p></li>
+</ul>
+
+
+
+<h4 id="5">5.</h4>
+
+<p>null和undefined的区别：</p>
+
+
+
+<h4 id="6">6.</h4>
+
+<p>“珠峰培训”   “周啸天”   “耿银鹏”   报错</p>
+
+
+
+<h4 id="7">7.</h4>
+
+<p>‘number’</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-keyword">let</span> num = <span class="hljs-built_in">Number</span>(<span class="hljs-string">'12.5px'</span>);  <span class="hljs-comment">//=&gt;NaN</span>
+</div><div class="hljs-line"><span class="hljs-keyword">let</span> type = <span class="hljs-keyword">typeof</span> num;  <span class="hljs-comment">//=&gt;"number"</span>
+</div><div class="hljs-line"><span class="hljs-keyword">if</span> (num == <span class="hljs-literal">NaN</span>) { alert(<span class="hljs-literal">NaN</span>); } 
+</div><div class="hljs-line"><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (type === <span class="hljs-string">'number'</span>) { alert(<span class="hljs-string">'number'</span>); } 
+</div><div class="hljs-line"><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (num == <span class="hljs-number">12.5</span>) { alert(<span class="hljs-number">12.5</span>); } 
+</div><div class="hljs-line"><span class="hljs-keyword">else</span> { alert(<span class="hljs-string">'12.5px'</span>); }
+</div></code></pre>
+
+
+
+<h4 id="8">8.</h4>
+
+<p>“NaNnulltrue珠峰培训121”</p>
+
+<p>2 1</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-comment">//=&gt;加号在JS中除了数学运算还有字符串拼接（加号左右两边出现字符串或者对象，基本上都是字符串拼接）</span>
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> + <span class="hljs-literal">false</span> + <span class="hljs-literal">undefined</span> + [] + <span class="hljs-literal">null</span> + <span class="hljs-literal">true</span> + <span class="hljs-string">'珠峰培训'</span> + [<span class="hljs-number">12</span>] + <span class="hljs-number">1</span>); 
+</div><div class="hljs-line"><span class="hljs-comment">/*</span>
+</div><div class="hljs-line"><span class="hljs-comment"> 1 + false  -&gt; 1</span>
+</div><div class="hljs-line"><span class="hljs-comment"> 1 + undefined -&gt; NaN</span>
+</div><div class="hljs-line"><span class="hljs-comment"> NaN + [] -&gt; 'NaN'</span>
+</div><div class="hljs-line"><span class="hljs-comment"> 'NaN' + null -&gt; 'NaNnull'</span>
+</div><div class="hljs-line"><span class="hljs-comment"> ...字符串拼接</span>
+</div><div class="hljs-line"><span class="hljs-comment">*/</span>
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line"><span class="hljs-comment">/*</span>
+</div><div class="hljs-line"><span class="hljs-comment"> * 不论 i++ 还是 ++i，都是在自身基础上累加1的数学运算</span>
+</div><div class="hljs-line"><span class="hljs-comment"> *    =&gt; 和 i+=1 或者 i=i+1 还不是完全一致的</span>
+</div><div class="hljs-line"><span class="hljs-comment"> *    =&gt; i++是先运算，后自身累加1，而++i是先自身累加1，然后再去运算的（不论是否加了小括号）</span>
+</div><div class="hljs-line"><span class="hljs-comment"> */</span>
+</div><div class="hljs-line"><span class="hljs-keyword">let</span> i=<span class="hljs-number">1</span>; 
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>-(i++)+(--i)+<span class="hljs-number">2</span>+(++i)-(i--)<span class="hljs-number">-2</span>); <span class="hljs-built_in">console</span>.log(i);
+</div><div class="hljs-line"><span class="hljs-comment">/*</span>
+</div><div class="hljs-line"><span class="hljs-comment"> 2-(i++) =&gt; 2-i / i++ =&gt; 1  i=2</span>
+</div><div class="hljs-line"><span class="hljs-comment"> 1+(--i) =&gt; --i / 1+累减结果 =&gt; i=1 2</span>
+</div><div class="hljs-line"><span class="hljs-comment"> 2+2 =&gt; 4</span>
+</div><div class="hljs-line"><span class="hljs-comment"> 4+(++i) =&gt; ++i / 4+累加结果 =&gt; i=2 6</span>
+</div><div class="hljs-line"><span class="hljs-comment"> 6-(i--) =&gt; 6-i / i-- =&gt; 4 i=1</span>
+</div><div class="hljs-line"><span class="hljs-comment"> 4-2 =&gt; 2</span>
+</div><div class="hljs-line"><span class="hljs-comment"> i=1</span>
+</div><div class="hljs-line"><span class="hljs-comment">*/</span>
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line"><span class="hljs-comment">//let n="10";</span>
+</div><div class="hljs-line"><span class="hljs-comment">//n++  =&gt; 11</span>
+</div><div class="hljs-line"><span class="hljs-comment">//n+=1 =&gt; "101"</span>
+</div><div class="hljs-line"><span class="hljs-comment">//n=n+1 =&gt; "101"</span>
+</div></code></pre>
+
+
+
+<h4 id="9">9.</h4>
+
+<p>“1”  “0”</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-comment">//=&gt;alert输出的结构都是转换为字符串的</span>
+</div><div class="hljs-line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">10</span>; i &gt;= <span class="hljs-number">2</span>; i--) { 
+</div><div class="hljs-line">    <span class="hljs-keyword">if</span> (i === <span class="hljs-number">6</span>) { 
+</div><div class="hljs-line">        i-=<span class="hljs-number">2</span>;
+</div><div class="hljs-line">        <span class="hljs-keyword">break</span>; 
+</div><div class="hljs-line">    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(i&lt;=<span class="hljs-number">5</span>) { 
+</div><div class="hljs-line">        i=<span class="hljs-number">2</span>; 
+</div><div class="hljs-line">    } <span class="hljs-keyword">else</span> { 
+</div><div class="hljs-line">        i-=<span class="hljs-number">2</span>; 
+</div><div class="hljs-line">        <span class="hljs-keyword">continue</span>; 
+</div><div class="hljs-line">    }
+</div><div class="hljs-line">    i--; 
+</div><div class="hljs-line">    alert(i); 
+</div><div class="hljs-line">}
+</div><div class="hljs-line">alert(i);
+</div></code></pre>
+
+
+
+<h4 id="10">10.</h4>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-built_in">Number</span>(<span class="hljs-string">""</span>);  <span class="hljs-comment">//=&gt;0</span>
+</div><div class="hljs-line"><span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">""</span>); <span class="hljs-comment">//=&gt;NaN</span>
+</div><div class="hljs-line">!!<span class="hljs-string">"parseInt(NaN)"</span>; <span class="hljs-comment">//=&gt;把非空字符串转化为布尔 true</span>
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line">!<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">typeof</span> <span class="hljs-keyword">typeof</span> [<span class="hljs-number">12</span>,<span class="hljs-number">23</span>]; <span class="hljs-comment">//=&gt;false</span>
+</div><div class="hljs-line"><span class="hljs-comment">/*</span>
+</div><div class="hljs-line"><span class="hljs-comment"> typeof typeof typeof [12,23] =&gt; "string"</span>
+</div><div class="hljs-line"><span class="hljs-comment"> !"string" =&gt; false</span>
+</div><div class="hljs-line"><span class="hljs-comment"> */</span>
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line"><span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">"1.6px"</span>) + <span class="hljs-built_in">parseInt</span>(<span class="hljs-string">"1.2px"</span>); 
+</div><div class="hljs-line"><span class="hljs-comment">/*</span>
+</div><div class="hljs-line"><span class="hljs-comment"> parseFloat("1.6px") =&gt; 1.6</span>
+</div><div class="hljs-line"><span class="hljs-comment"> parseInt("1.2px") =&gt; 1</span>
+</div><div class="hljs-line"><span class="hljs-comment"> 1.6 + 1 =&gt; 2.6</span>
+</div><div class="hljs-line"><span class="hljs-comment"> */</span>
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line"><span class="hljs-keyword">typeof</span> <span class="hljs-string">"parseInt(undefined)"</span> + <span class="hljs-number">12</span> + !!<span class="hljs-built_in">Number</span>(<span class="hljs-string">''</span>); 
+</div><div class="hljs-line"><span class="hljs-comment">/*</span>
+</div><div class="hljs-line"><span class="hljs-comment"> typeof "parseInt(undefined)"  =&gt; "string"</span>
+</div><div class="hljs-line"><span class="hljs-comment"> !!Number('') =&gt; false</span>
+</div><div class="hljs-line"><span class="hljs-comment"> "string" + 12 + false =&gt; "string12false"</span>
+</div><div class="hljs-line"><span class="hljs-comment"> */</span>
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line"><span class="hljs-keyword">typeof</span> !!<span class="hljs-built_in">parseInt</span>(<span class="hljs-literal">undefined</span>) + !<span class="hljs-built_in">parseFloat</span>(<span class="hljs-literal">null</span>);
+</div><div class="hljs-line"><span class="hljs-comment">/*</span>
+</div><div class="hljs-line"><span class="hljs-comment"> typeof !!parseInt(undefined)</span>
+</div><div class="hljs-line"><span class="hljs-comment">     parseInt(undefined) =&gt; parseInt("undefined") =&gt; NaN</span>
+</div><div class="hljs-line"><span class="hljs-comment">     !!NaN =&gt; false</span>
+</div><div class="hljs-line"><span class="hljs-comment">     typeof false =&gt; "boolean"</span>
+</div><div class="hljs-line"><span class="hljs-comment"> !parseFloat(null) </span>
+</div><div class="hljs-line"><span class="hljs-comment">     parseFloat(null) =&gt; NaN</span>
+</div><div class="hljs-line"><span class="hljs-comment">     !NaN =&gt; true</span>
+</div><div class="hljs-line"><span class="hljs-comment"> "boolean" + true =&gt; "booleantrue"</span>
+</div><div class="hljs-line"><span class="hljs-comment"> */</span>
+</div></code></pre>
+
+
+
+<h4 id="11">11.</h4>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-javascript hljs"><div class="hljs-line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params"></span>) </span>{
+</div><div class="hljs-line">    <span class="hljs-keyword">let</span> total = <span class="hljs-number">0</span>;
+</div><div class="hljs-line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">arguments</span>.length; i++) {
+</div><div class="hljs-line">        <span class="hljs-keyword">let</span> item = <span class="hljs-built_in">Number</span>(<span class="hljs-built_in">arguments</span>[i]);
+</div><div class="hljs-line">        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isNaN</span>(item)) <span class="hljs-keyword">continue</span>;
+</div><div class="hljs-line">        total += item;
+</div><div class="hljs-line">    }
+</div><div class="hljs-line">    <span class="hljs-keyword">return</span> total;
+</div><div class="hljs-line">}
+</div><div class="hljs-line"><span class="hljs-keyword">let</span> result = sum(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-string">'40'</span>, <span class="hljs-string">'AA'</span>);
+</div><div class="hljs-line"><span class="hljs-built_in">console</span>.log(result);
+</div></code></pre></div></body></html>

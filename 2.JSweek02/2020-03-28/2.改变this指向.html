@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /* 
+    在function.prototype 上有三个方法;
+    call
+    apply
+    bind
+    这三个方法都是用来改变函数执行时候,方法中的this指向问题
+    
+    */    
+
+
+    function changethis(func,content,...args){
+        // let args = Array.from(arguments).slice(2);
+        let uniqueKey = `$$${new Date().getTime()}`;
+        content[uniqueKey] = func;
+        let res = content[uniqueKey](...args);
+        delete content[uniqueKey];
+        return res;
+    }
+    let func = function(x,y){
+        console.log(this.name);
+        return x+y;
+    };
+    window.name = "HELLO~";
+    let obj = {
+            name :"珠峰培训"
+    }
+    // func(10,20);
+    // obj.func(10,20)
+    // obj.$func = func;
+    // obj.$func(10,2);
+    let res = changethis(func,obj,10,20)
+    </script>
+</body>
+</html>

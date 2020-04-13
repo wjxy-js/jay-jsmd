@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<div class="box" id="box">
+		<!-- 我就是一个注释 -->
+		<h2 class="title">课程大纲</h2>
+		<ul>
+			<li>正式课前五周：JS（包含ES6~ES9）中的核心知识、底层原理、实战案例</li>
+			<li id="li2">正式课六七周：AJAX、HTTP、NODE、WEBPACK、GIT、前后端交互、跨域...</li>
+			<!-- 上述都是JS最底层的核心知识，必须掌握扎实 -->
+			<li>正式课第八~十周：VUE全家桶（VUE核心源码、VUEX、VUE-ROUTER源码解读）实战应用</li>
+			<li id="li4">正式课第十一/十二周：REACT全家桶（所有的核心源码解读）实战应用</li>
+			上面这些东西学会了，找工作已经没问题了
+			<li>正式课第十三~十四周：小程序开发、TypeScript、企业讲师实战分享、毕设答辩、简历、就业指导以及一些最新的内容扩展</li>
+			<!-- 上述东西是现在市面上要求的能力，这些能力需要牢牢掌握，有独立全栈实战开发能力，毕设项目做不出来，不允许毕业 -->
+			<li>长期的，不定时的内部分享课：前端需要的，在我们课程中基本都有，而且基础+实战+源码全方面都包含了</li>
+		</ul>
+	</div>
+
+	<!-- IMPORT JS -->
+	<script>
+		// 需求：previousElementSibling是获取上一个哥哥元素节点（兼容性）  previousSibling获取上一个哥哥节点（没有兼容性的）  =>获取当前节点的所有元素哥哥节点（兼容所有的浏览器）  JQ中的prevAll这个方法就是干这个的
+		/* function prevAll(node) {
+			let result = [];
+			// 获取它爹
+			let parent = node.parentNode;
+			// 获取它爹中的儿子（自己和他所有的兄弟）
+			let nodeList = parent.childNodes;
+			// 循环所有节点，元素类型的是我们想要的，并且找到当前节点后就不在循环了
+			for (let i = 0; i < nodeList.length; i++) {
+				let item = nodeList[i];
+				if (item === node) {
+					// 找到的是自己
+					break;
+				}
+				// 找的不是自己，我们把元素节点存储起来
+				if (item.nodeType === 1) {
+					result.push(item);
+				}
+			}
+			return result;
+		} */
+		/* 
+		 * 获取当前节点的哥哥节点，再获取哥哥节点的哥哥节点...一直找到没有哥哥节点为止（没有哥哥节点，结果为NULL）； 再查找的过程中，把所有找到的元素节点存储起来即可；
+		 *   => 循环不知道具体次数（不知道找多少次） =>while循环
+		 */
+		function prevAll(node) {
+			let prev = node.previousSibling,
+				result = [];
+			// 循环找他的哥哥，一直到没有哥哥了为止
+			while (prev !== null) {
+				// 把找到的哥哥中是元素节点的存储起来
+				if (prev.nodeType === 1) {
+					result.unshift(prev);
+				}
+				prev = prev.previousSibling;
+			}
+			return result;
+		}
+
+		/* 获取所有的弟弟元素节点 */
+		/* function nextAll(node) {
+			// 获取其父亲中所有的儿子
+			let nodeList = node.parentNode.childNodes,
+				result = [];
+			// 倒着从最后一项开始循环
+			for (let i = nodeList.length - 1; i >= 0; i--) {
+				let item = nodeList[i];
+				if (item === node) break;
+				item.nodeType === 1 ? result.unshift(item) : null;
+			}
+			return result;
+		} */
+		function nextAll(node) {
+			let result = [],
+				next = node.nextSibling;
+			while (next !== null) {
+				next.nodeType === 1 ? result.push(next) : null;
+				next = next.nextSibling;
+			}
+			return result;
+		}
+
+		/* 获取所有的兄弟元素节点：所有的哥哥+所有的弟弟 */
+		/* function siblings(node) {
+			// 所有的儿子中一定包含了，我和我的兄弟们
+			let nodeList = node.parentNode.childNodes,
+				result = [];
+			// 依次遍历每一个节点，把非元素和我本身除外，其余的存储起来
+			for (let i = 0; i < nodeList.length; i++) {
+				let item = nodeList[i];
+				if (item.nodeType === 1 && item !== node) {
+					result.push(item);
+				}
+
+				// if (item.nodeType !== 1 || item === node) {
+				// 	continue;
+				// }
+				// result.push(item);
+			}
+			return result;
+		} */
+		function siblings(node) {
+			// 分别调用两个方法获取所有的哥哥和所有的弟弟，就是所有的兄弟
+			return prevAll(node).concat(nextAll(node));
+		}
+
+		/* 获取当前节点的索引：他在所有兄弟中的排行 */
+		function index(node) {
+			// 它有几个哥哥，那么它的索引就是几
+			return prevAll(node).length;
+		}
+
+		let li4 = document.getElementById('li4');
+		console.log(index(li4));
+	</script>
+
+
+	<script>
+		/* 
+		 * 节点NODE：所有页面中包含的东西，都被称为节点
+		 *   document文档节点
+		 *       nodeType:9
+		 *       nodeName:"#document"
+		 *       nodeValue:null
+		 *   元素节点：元素标签
+		 *       nodeType:1
+		 *       nodeName:"大写标签名"
+		 *       nodeValue:null
+		 *   文本节点：文字或者标签之间的空格和换行也被当做文本节点
+		 *       nodeType:3
+		 *       nodeName:"#text"
+		 *       nodeValue:文本内容
+		 *   注释节点：注释内容
+		 *       nodeType:8
+		 *       nodeName:"#comment"
+		 *       nodeValue:注释内容
+		 *   ......
+		 */
+
+		//=====描述节点和节点之间的关系属性，基于这些属性可以获取到指定的节点
+		// [CONTAINER].childNodes：获取当前容器中所有的子节点（包含各种类型的节点）
+		// [CONTAINER].children：获取当前容器中所有的元素子节点（只有元素标签的，在IE低版本浏览器中，也会把注释当做元素节点）
+		// [NODE].parentNode：获取某一个节点的父节点
+		// [NODE].previousSibling：获取某一个节点的上一个哥哥节点
+		// [NODE].previousElementSibling：获取某一个节点的上一个哥哥元素节点（不兼容IE低版本）
+		// [NODE].nextSibling：获取某一个节点的下一个弟弟节点
+		// [NODE].nextElementSibling：获取某一个节点的下一个弟弟元素节点（不兼容IE低版本）
+		// [CONTAINER].firstChild：获取容器中第一个子节点
+		// [CONTAINER].firstElementChild：获取容器中第一个元素子节点（不兼容IE低版本）
+		// [CONTAINER].lastChild：获取容器中最后一个子节点
+		// [CONTAINER].lastElementChild：获取容器中最后一个元素子节点（不兼容IE低版本）
+
+		// var box = document.getElementById('box');
+		// console.log(box.childNodes); //=>获取的是一个节点集合，包含容器中的所有类型节点（空格换行是文本节点） =>7个
+		// console.log(box.children); //=>获取的是一个元素集合，只有元素节点  =>2个
+		// 兼容问题：在IE6~8中
+		// 1. children获取的是3个，因为它把注释也当做元素节点处理的
+		// 2. childNodes获取的也是3个，因为在这些浏览器中，不会把空格和换行当做文本节点（不认为这是节点）
+
+		/* 获取指定容器CONTAINER中的所有元素子节点，需要兼容所有的浏览器 */
+		/* function children(container) {
+			// 获取所有的子节点，遍历这些节点，所有NODETYPE===1的就是我们想要的元素子节点
+			var nodeList = container.childNodes,
+				result = [];
+			for (var i = 0; i < nodeList.length; i++) {
+				var itemNode = nodeList[i];
+				if (itemNode.nodeType === 1) {
+					// 元素节点
+					result.push(itemNode);
+				}
+			}
+			return result;
+		}
+
+		var arr = children(box);
+		console.log(arr); */
+	</script>
+</body>
+
+</html>

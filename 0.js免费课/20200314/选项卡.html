@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+	<link rel="stylesheet" href="reset.min.css">
+	<style>
+		.tabBox {
+			margin: 20px auto;
+			width: 500px;
+		}
+
+		.tabBox .tab {
+			position: relative;
+			top: 1px;
+		}
+
+		.tabBox .tab li {
+			float: left;
+			margin-right: 10px;
+			padding: 0 10px;
+			height: 35px;
+			line-height: 35px;
+			font-size: 14px;
+			border: 1px solid #AAA;
+			background: #f6f7fb;
+			cursor: pointer;
+		}
+
+		.tabBox .tab li.active {
+			background: #FFF;
+			border-bottom-color: #FFF;
+		}
+
+		.tabBox .container div {
+			display: none;
+			padding: 10px;
+			height: 100px;
+			border: 1px solid #AAA;
+			background: #FFF;
+		}
+
+		.tabBox .container div.active {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<section class="tabBox" id="tabBox">
+		<ul class="tab clearfix">
+			<li class="active">编程</li>
+			<li>读书</li>
+			<li>运动</li>
+		</ul>
+		<!-- 加一个容器是保证DIV的兄弟中只有三个DIV -->
+		<div class="container">
+			<div class="active">编程可以使我“赚取高薪”</div>
+			<div>读书可以使我“修身养性”</div>
+			<div>运动可以使我“身体健康”</div>
+		</div>
+	</section>
+
+	<!-- IMPORT JS -->
+	<script src="utils.js"></script>
+	<script>
+		var navList = document.querySelectorAll('.tab li'),
+			divList = document.querySelectorAll('.container div');
+		for (var i = 0; i < navList.length; i++) {
+			navList[i].onclick = function () {
+				// 1.让当前点击的这个LI和DIV有选中的样式
+				// 获取当前点击LI的索引
+				var curIndex = index(this);
+				navList[curIndex].className = 'active';
+				divList[curIndex].className = 'active';
+
+				// 2.其余的（兄弟）没有选中样式
+				var otherNav = siblings(navList[curIndex]),
+					otherDiv = siblings(divList[curIndex]);
+				for (var j = 0; j < otherNav.length; j++) {
+					otherNav[j].className = '';
+					otherDiv[j].className = '';
+				}
+			};
+		}
+	</script>
+</body>
+
+</html>

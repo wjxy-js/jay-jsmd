@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * number数据类型
+		 *   =>正数、零、负数、小数
+		 *   =>NaN：not a number 不是一个有效数字，但是属于number类型的
+		 *   =>Infinity：无穷大的值，也是number类型的
+		 */
+		// console.log(1 == 1); //=>true
+		// console.log(NaN == NaN); //=>false  NaN和任何值都不相等（包括自己本身）
+
+		/* 想要验证一下n是不是有效数字：isNaN 验证一个值是否为非有效数字，如果是有效数字，则返回false，如果不是有效数字，则返回true */
+		// let n = NaN;
+		// if (n == NaN) {  这样判断是不行的
+		// 	console.log('n不是有效数字!');
+		// }
+		// console.log(isNaN(1)); //=>false
+		// console.log(isNaN(NaN)); //=>true
+		// console.log(isNaN(Infinity)); //=>false
+
+		// console.log(isNaN('AA')); //=>true
+		// console.log(isNaN('12.5')); //=>false
+		// console.log(isNaN('12.5px')); //=>true
+		// console.log(isNaN([])); //=>false
+		// console.log(isNaN([10])); //=>false
+		// console.log(isNaN([10, 20])); //=>true
+		// console.log(isNaN({})); //=>true
+		// console.log(isNaN(null)); //=>false
+		// console.log(isNaN(undefined)); //=>true
+		// console.log(isNaN(Symbol(1))); //=>报错
+
+		/* 
+		 * 在使用isNaN进行检测的时候，如果检测的值是非数字类型的值，则需要先把其转换为数字类型，然后在进行检测  
+		 * 把其它数据类型转换为数字类型
+		 *   + Number([value])  而isNaN在检测的时候，使用的就是这种方式转换为数字类型的
+		 *   + parseInt([value]) 
+		 *   + parseFloat([value])
+		 * 
+		 * Number是JS内置的转换方法，可以把其它数据类型“强制”转换为数字类型
+		 *   + 把字符串转换为数字：一但字符串中出现非有效数字字符，则结果为NaN，只有都是有效数字字符，才能转换为具体的数字，空字符串会转换为0
+		 *   + 把布尔转换为数字：true转换为1  false转换为0
+		 *   + 把空转换为数字：null转换为0 undefined转换为NaN
+		 *   + 不能把Symbol类型转换为数字，否则会报错 
+		 *   + 对象转换为数字：先把对象转换为字符串，再把字符串转为数字
+		 *      + 普通对象
+		 *      + 数组对象
+		 *      + 其余对象格式基本上都会变为数字NaN	
+		 *   + 函数转换为数字：结果都是NaN
+		 */
+		// console.log(Number('12')); //=>12
+		// console.log(Number('12.5')); //=>12.5
+		// console.log(Number('12px')); //=>NaN
+		// console.log(Number('12.5.0')); //=>NaN
+		// console.log(Number(true)); //=>1
+		// console.log(Number(false)); //=>0
+		// console.log(Number(null)); //=>0
+		// console.log(Number(undefined)); //=>NaN
+		// console.log(Number(Symbol(13))); //=>Cannot convert a Symbol value to a number
+		// console.log(Number(function func() {}));
+
+		/*
+		 * 1.先把obj转化为字符串 "[object Object]"
+		 * 2.把字符串转换为数字 Number("[object Object]") 
+		 */
+		// let obj={x:100};
+		// console.log(Number(obj)); //=>NaN
+
+		/*
+		 * 1.先把ARR转换为字符串： "10"
+		 * 2.在把"10"转换为数字：10
+		 */
+		// let arr = ["10"];
+		// console.log(Number(arr)); //=>10
+		/*
+		 * 1.先把ARR转换为字符串： "10,20"
+		 * 2.在把"10,20"转换为数字：NaN
+		 */
+		// arr = ["10", "20"];
+		// console.log(Number(arr)); //=>NaN
+
+		// console.log(Number([])); //=>  []->''  Number('')->0
+		// console.log(Number(['AA'])); //=> ['AA']->'AA'  Number('AA')->NaN
+	</script>
+
+	<script>
+		/*
+		 * parseInt / parseFloat：也是把其它数据类型转换为number类型的
+		 *    处理原理和Number不一样，他们是把字符串转换为数字类型（如果处理的值不是字符串，需要先转换为字符串然后在去转换为number类型的） 
+		 *    =>从字符串最左边开始查找，把找到的有效数字字符转换为数字，一直遇到一个非有效数字字符为止，则结束查找
+		 */
+		// console.log(Number('12px')); //=>NaN
+		// console.log(parseInt('12px')); //=>12
+		// console.log(parseInt('12px24')); //=>12
+		// console.log(parseInt('width:12px')); //=>NaN
+		// console.log(parseInt('12.5px')); //=>12
+		// console.log(parseFloat('12.5px')); //=>12.5  parseFloat比parseInt多识别一个小数点
+
+		// console.log(Number(true)); //=>1
+		// console.log(parseInt(true)); //=>先把TRUE转换为字符串"TRUE"  parseInt('true') =>NaN
+		// console.log(parseInt(NaN)); //=>NaN
+		// console.log(Number(null)); //=>0
+		// console.log(parseInt(null)); //=> parseInt('null') =>NaN
+		// console.log(isNaN(Number(parseInt("0.8")))); //=>parseInt("0.8")->0   Number(0)->0  isNaN(0)->false
+
+		// console.log(Number('')); //=>0
+		// console.log(parseInt('')); //=>NaN
+	</script>
+
+	<script>
+		// toFixed：保留小数点后面N位（最后的结果是一个字符串）
+		// let n = 3.1415926;
+		// console.log(n.toFixed(2)); //=>"3.14"
+
+		// console.log(Number.MAX_SAFE_INTEGER); //=>9007199254740991 最大安全数（JS能够有效识别的最大整数）
+		// console.log(9007199254740992 == 9007199254740993); //=>true  应该是不一样的，但是超过了最大数值，JS无法精准计算
+		// ES6中提供了一个新的数据类型 BigInt：管理超过安全数值的数字
+		// console.log(BigInt(9007199254740992), BigInt(9007199254740993));
+		/* 
+		 * 基本数据类型
+		 *   number string boolean null undefined symbol  => BigInt新增的基本数据类型
+		 */
+	</script>
+</body>
+
+</html>

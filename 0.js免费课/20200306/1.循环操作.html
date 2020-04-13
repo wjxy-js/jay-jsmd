@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * 循环：一轮一轮的重复做某一件事情（真实项目中一般应用于：循环一个集合或者控制循环处理的次数，每一轮循环都控制相关的事情执行一遍）
+		 * 
+		 * for(设置初始值;设置循环执行的条件,控制循环次数;每一轮循环结束后处理的事情[步长累加]){
+		 *    //=>循环体（每一轮循环要做的事情）		 
+		 * }
+		 * 1. 设置初始值
+		 * 2. 验证条件（条件不成立循环结束）
+		 * 3. 循环体
+		 * 4. 步长累加
+		 * 5. 再次验证条件
+		 * 6. 循环体
+		 * ....
+		 */
+
+		/* for (var i = 0; i < 5; i++) {
+			console.log(`本轮循环i的值是：${i}`);
+		}
+		console.log(`循环结束后，此时的i已经变为：${i}`); */
+
+		/*
+		 * 初始值：i=0 
+		 *    0<5 成立的
+		 *      0<3成立  i++  i=1  =>1
+		 *      i+=2  i=3
+		 *    3<5 成立的
+		 *      3<3 不成立  =>3
+		 *      i+=2  i=5
+		 *    5<5 不成立 循环结束
+		 */
+		/* for (var i = 0; i < 5; i += 2) {
+			if (i < 3) {
+				i++;
+			}
+			console.log(`本轮循环i的值是：${i}`);
+		}
+		console.log(`循环结束后，此时的i已经变为：${i}`); */
+
+		/* var n = 10;
+		for (; n > 0;) {
+			if (n > 5) {
+				n -= 2;
+			} else {
+				n -= 3;
+			}
+		}
+		console.log(`循环结束后，此时的i已经变为：${n}`);  //=>-2 */
+
+		/* 
+		 * ==循环体中可能出现的两个关键字== 
+		 *   break 强制结束整个循环（循环体中一旦遇到break，整个循环都结束了，break下面代码不在执行，步长累计也不再执行）
+		 *   continue 结束本轮循环，下一轮继续（循环体中一旦遇到continue，本轮循环结束，continue下面代码不在执行，但是步长累计会执行）
+		 */
+		/* for (var i = 0; i < 5; i++) {
+			if (i > 3) {
+				// i=4 的时候，遇到了break，此时循环结束
+				break;
+			}
+			console.log(`本轮循环i的值是：${i}`); //=> 0 1 2 3 
+		}
+		console.log(`循环结束后，此时的i已经变为：${i}`); //=>4 */
+
+		/* for (var i = 0; i < 5; i++) {
+			if (i > 2) {
+				i += 1;
+				//=>i=3 i++ =>i=4 遇到continue：本轮循环结束（下面输出不执行，但是i++会执行）
+				continue; 
+			}
+			console.log(`本轮循环i的值是：${i}`); //=>0 1 2 
+		}
+		console.log(`循环结束后，此时的i已经变为：${i}`); //=>5 */
+
+		/* for (var i = 0; i < 10; i++) {
+			if (i >= 2) {
+				i += 2;
+				continue;
+			}
+			if (i >= 6) {
+				i--;
+				break;
+			}
+			i++;
+			console.log(i); //=>1
+		}
+		console.log(i); //=>11 */
+	</script>
+
+	<script>
+		/* 遍历（循环 / 迭代）数组中的每一项：因为数组有索引和length属性，所以我们能够知道循环次数，也能基于索引获取对应项，使用FOR循环就可以解决 */
+		/* var arr = [10, 20, 30, 40, 50];
+		for (var i = 0; i < arr.length; i++) {
+			// // arr.length = 5
+			// // 第一轮循环 i=0
+			// arr[0]
+			// // 第二轮循环 i=1
+			// arr[1]
+			// // ....
+			// // 第五轮循环 i=4
+			// arr[4]
+			// 每一轮循环i变量存储的值就是我们当前这一轮想获取数组中当前项的索引
+
+			console.log(arr[i]);
+		} */
+
+		/* 遍历对象中的每一个属性：我们无法直接获取到对象中有多少个属性（ES6中的Object.keys除外），也就无法知道循环多少次，所以无法使用FOR循环；真实项目中遍历对象我们基于FOR IN循环；*/
+		/* var obj = {
+			name: '珠峰',
+			age: 10,
+			teacher: '周老师',
+			address: '北京市回龙观东大街'
+		};
+		for (var key in obj) {
+			//=>创建变量（存储的是属性） in  对象
+			//=>当前对象中有多少个可枚举的属性，就循环多少次
+			//=>key变量存储的是每一次循环的属性名
+			//=>obj[key]获取key变量对象属性名的属性值
+			// 第一轮循环  key='name'  obj[key] => obj['name']
+			// obj.key或者obj['key'] 获取属性名叫做key的属性值
+			console.log(`本轮循环，属性名：${key}，属性值：${obj[key]}`);
+		} */
+
+		// FOR IN遍历的时候，是优先按照从小到大的机制遍历数字属性的
+		/* var obj = {
+			name: '珠峰',
+			age: 10,
+			10: 100,
+			0: 10
+		};
+		for (var key in obj) {
+			// 0 10 name age
+			console.log(`本轮循环，属性名：${key}，属性值：${obj[key]}`);
+		} */
+	</script>
+</body>
+
+</html>

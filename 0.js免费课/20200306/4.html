@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+	<link rel="stylesheet" href="reset.min.css">
+	<style>
+		html,
+		body {
+			height: 100%;
+			overflow: hidden;
+		}
+	</style>
+</head>
+
+<body style="background-color: white;">
+	<button id="changeBtn">点击切换BODY的颜色 白->红->蓝->绿->白</button>
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * 点击BUTTON的时候，获取到当前BODY的背景颜色，根据现有的背景颜色，把其更改为对应的颜色 
+		 *   1.想要操作谁，就先获取谁
+		 *   2.事件绑定
+		 *   3.实现对应的需求逻辑即可 
+		 *
+		 *  body.style.backgroundColor 操作的是元素的行内样式（只对元素行内上写的样式有作用），扩展思考：想要获取元素的样式（不论写在哪的样式），后面课程中会讲到 getComputedStyle 
+		 *  
+		 *  在JS中获取颜色，如果设置的时候是基于16进制或者RGB表示法写的样式，得到的结果一般都是RGB的染色值（我们最好把需要在JS中获取的颜色用英文单词表示法编写）
+		 */
+		// let body = document.body,
+		// 	changeBtn = document.getElementById('changeBtn');
+		// changeBtn.onclick = function () {
+		// 	// 每一次点击要获取当前最新的背景颜色
+		// 	let bg = body.style.backgroundColor;
+		// 	/* if (bg === 'white') {
+		// 		body.style.backgroundColor = 'red';
+		// 	} else if (bg === 'red') {
+		// 		body.style.backgroundColor = 'blue';
+		// 	} else if (bg === 'blue') {
+		// 		body.style.backgroundColor = 'green';
+		// 	} else {
+		// 		body.style.backgroundColor = 'white';
+		// 	} */
+		// 	// SWITCH CASE只应用于 一个变量（JS表达式）在不同值情况下的不同操作
+		// 	switch (bg) {
+		// 		case 'white':
+		// 			body.style.backgroundColor = 'red';
+		// 			break;
+		// 		case 'red':
+		// 			body.style.backgroundColor = 'blue';
+		// 			break;
+		// 		case 'blue':
+		// 			body.style.backgroundColor = 'green';
+		// 			break;
+		// 		default:
+		// 			body.style.backgroundColor = 'white';
+		// 	}
+		// };
+	</script>
+
+	<script>
+		// 颜色是由变化规律的：红->蓝->绿->白
+		let body = document.body,
+			changeBtn = document.getElementById('changeBtn');
+		let arr = ['red', 'blue', 'green', 'white'],
+			index = -1;
+		changeBtn.onclick = function () {
+			index++;
+			if (index > arr.length - 1) {
+				// 已经到头了，则从索引零重新开始即可
+				index = 0;
+			}
+			body.style.backgroundColor = arr[index];
+		};
+		/*
+		 * arr.length-1=3  最大索引（长度-1，因为索引从零开始）
+		 * 第一次点击 
+		 *    index++  => index=0
+		 *    body.style.backgroundColor = arr[0];  'RED'
+		 * 第二次点击
+		 *    index++  => index=1
+		 *    body.style.backgroundColor = arr[1];  'BLUE'
+		 * 第三次点击
+		 *    index++  => index=2
+		 *    body.style.backgroundColor = arr[2];  'GREEN'
+		 * 第四次点击
+		 *    index++  => index=3
+		 *    body.style.backgroundColor = arr[3];  'WHITE'
+		 * 第五次点击
+		 *    index++  => index=4
+		 *    if(4>3) => index=0
+		 *    body.style.backgroundColor = arr[0];  'RED'
+		 * ......
+		 */
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * Math数学函数中常用的方法 
+		 *   1.Math是一个对象对象数据类型值，在它的堆内存中，存储了很多的内置属性和方法，这些方法一般都是用来操作数字的，所以我们把Math称为“数学函数对象”
+		 */
+		// console.log(typeof Math); //=>"object"
+		// console.dir(Math);
+
+		/*
+		 * Math.PI / Math['PI'] ：获取圆周率  => 3.141592653589793
+		 * 
+		 * Math.abs([N])：获取数字N的绝对值（绝对值都是正数）
+		 * Math.ceil([N]) / Math.floor([N])：把数字N向上或者向下取整
+		 * Math.round([N])：把数字N四舍五入（结果是整数）
+		 * Math.max(N1,N2,...) / Math.min(N1,N2,...)：获取一堆数值中的最大值和最小值
+		 * Math.pow([N],[m])：获取数字N的m次幂（多少次方）
+		 * Matn.sqrt([N])：给数字N开平方
+		 * Math.random()：获取0~1之间的随机小数（每一次获取的结果是不一样的）
+		 * 获取[N,M]之间的随机整数（包含N和M）：Math.round(Math.random()*(m-n)+n)
+		 */
+
+		/* console.log(Math.abs(12)); //=>12
+		console.log(Math.abs(-12)); //=>12
+		console.log(Math.abs(0)); //=>0 */
+
+		/* console.log(Math.ceil(12)); //=>12
+		console.log(Math.ceil(12.01)); //=>13
+		console.log(Math.ceil(12.99)); //=>13
+		console.log(Math.ceil(-12.01)); //=>-12
+		console.log(Math.ceil(-12.99)); //=>-12
+		console.log(Math.floor(12)); //=>12
+		console.log(Math.floor(12.01)); //=>12
+		console.log(Math.floor(12.99)); //=>12
+		console.log(Math.floor(-12.01)); //=>-13
+		console.log(Math.floor(-12.99)); //=>-13 */
+
+		/* console.log(Math.round(12)); //=>12
+		console.log(Math.round(12.49)); //=>12
+		console.log(Math.round(12.5)); //=>13 正数中 5及5以上是进一位
+		console.log(Math.round(12.51)); //=>13
+		console.log(Math.round(-12.49)); //=>-12
+		console.log(Math.round(-12.5)); //=>-12 负数中 5及5以下是舍掉
+		console.log(Math.round(-12.51)); //=>-13 */
+
+		/* console.log(Math.max(12, 14, 34, 24, 25, 31, 15)); //=>34
+		console.log(Math.min(12, 14, 34, 24, 25, 31, 15)); //=>12 */
+
+		/* console.log(Math.pow(2, 1)); //=>2
+		console.log(Math.pow(2, 2)); //=>4
+		console.log(Math.pow(2, 3)); //=>8
+		console.log(Math.pow(2, 10)); //=>1024 （1024B=1KB  1024KB=1MB  1024MB=1GB  1024GB=1TB） 10.24被称为程序猿的节日 */
+
+		/* console.log(Math.sqrt(4)); //=>2
+		console.log(Math.sqrt(16)); //=>4
+		console.log(Math.sqrt(10)); //=>3.1622776601683795 */
+
+		// 获取到的随机数特点：基本上不会重复（Math.random经常应用于“随机”和“不重复”）
+		/* for (let i = 0; i < 5; i++) {
+			console.log(Math.random());
+		} */
+
+		// 需求：1-10之间的随机整数
+		/* Math.random()  0~1小数  Math.round => 0或者1 * 10  =>0~10之间的整数
+		Math.random()  0~1小数  *9 =>0~9之间的小数  +1 => 1~10之间的小数  Math.round => 1-10之间的整数 */
+
+		/* 获取[N,M]之间的随机整数（包含N和M）：Math.round(Math.random()*(m-n)+n) */
+		/* for (let i = 0; i < 5; i++) {
+			let ran = Math.round(Math.random() * (10 - 1) + 1);
+			console.log(ran);
+		} */
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * queryURLParams：获取地址栏中问号传参的信息 
+		 *
+		 'http://www.zhufengpeixun.cn/?lx=1&name=JS&from=baidu#video' 解析问号和井号后面的值，最后得到一个包含信息的对象
+		 =>
+		 {
+			 lx:1,
+			 name:'JS',
+			 from:'baidu',
+			 HASH:'video'
+		 }
+		 */
+
+		/* function queryURLParams(url) {
+			// 1.首选获取问号和井号后面的值
+			let askIndex = url.indexOf('?'),
+				polIndex = url.lastIndexOf('#');
+			let askText = url.substring(askIndex + 1, polIndex),
+				polText = url.substring(polIndex + 1);
+			// console.log(askText, polText); //=>"lx=1&name=JS&from=baidu"  "video"
+
+			// 2.把获取到的结果进行解析，最后拼成一个对象返回
+			let obj = {};
+			// 处理哈希值（井号后面的值）
+			polText.length > 0 ? obj['HASH'] = polText : null;
+			// 问号参数的处理
+			if (askText) {
+				// askText.split('&') =>["lx=1","name=JS","from=baidu"]
+				askText.split('&').forEach(item => {
+					// item：循环数组中的每一项
+					let arr = item.split('='), //=>"lx=1" => ["lx",1]
+						key = arr[0],
+						value = arr[1];
+					obj[key] = value;
+				});
+			}
+			return obj;
+		} */
+
+
+		/* function queryURLParams(url) {
+			// 1.首选获取问号和井号后面的值
+			let askIndex = url.indexOf('?'),
+				polIndex = url.lastIndexOf('#');
+			let askText = url.substring(askIndex + 1, polIndex),
+				polText = url.substring(polIndex + 1);
+			//=>"lx=1&name=JS&from=baidu"  "video"
+
+			// 2.把获取到的结果进行解析，最后拼成一个对象返回
+			let obj = {};
+			// 处理哈希值（井号后面的值）
+			polText.length > 0 ? obj['HASH'] = polText : null;
+			// 问号参数的处理
+			if (askText) {
+				let askArr = askText.split('&'); //=>["lx=1","name=JS","from=baidu"]
+				for (let i = 0; i < askArr.length; i++) {
+					let item = askArr[i];
+					let itemArr = item.split('='); //=>"lx=1"  ["lx","1"]
+					obj[itemArr[0]] = itemArr[1];
+				}
+			}
+			return obj;
+		} */
+
+
+		/* function queryURLParams(url) {
+			let askIndex = url.indexOf('?'),
+				polIndex = url.lastIndexOf('#'),
+				askText = '',
+				polText = '';
+			polIndex === -1 ? polIndex = url.length : null;
+			polText = url.substring(polIndex + 1);
+			if (askIndex > -1) {
+				askText = url.substring(askIndex + 1, polIndex);
+			}
+			let obj = {};
+			polText.length > 0 ? obj['HASH'] = polText : null;
+			if (askText) {
+				askText.split('&').forEach(item => {
+					let arr = item.split('=');
+					obj[arr[0]] = arr[1];
+				});
+			}
+			return obj;
+		} */
+
+		// let result = queryURLParams('http://www.zhufengpeixun.cn/?lx=1&name=JS&from=baidu#video');
+		// let result = queryURLParams('http://www.zhufengpeixun.cn/?lx=1&name=JS&from=baidu');
+		// let result = queryURLParams('http://www.zhufengpeixun.cn/#video');
+		// let result = queryURLParams('http://www.zhufengpeixun.cn/');
+		// console.log(result);
+	</script>
+
+	<script>
+		/*
+		 * queryURLParams：获取地址栏中问号传参的信息 
+		 *
+		 'http://www.zhufengpeixun.cn/?lx=1&name=JS&from=baidu#video' 解析问号和井号后面的值，最后得到一个包含信息的对象
+		 =>
+		 {
+			 lx:1,
+			 name:'JS',
+			 from:'baidu',
+			 HASH:'video'
+		 }
+		 */
+
+		/* function queryURLParams(url) {
+			// 1.创建A标签（A元素对象）来获取到问号参数和哈希值
+			let link = document.createElement('a');
+			link.href = url;
+			let askText = link.search.substr(1),
+				polText = link.hash.substr(1),
+				obj = {};
+			// 2.向对象中进行存储
+			polText ? obj['HASH'] = polText : null;
+			if (askText) {
+				let arr = askText.split(/(?:&|=)/g); //=>同时按照两个字符来拆分：["lx", "1", "name", "JS", "from", "baidu"]
+				for (let i = 0; i < arr.length; i += 2) {
+					// console.log(arr[i], arr[i + 1]); 属性名和属性值
+					obj[arr[i]] = arr[i + 1];
+				}
+			}
+			return obj;
+		}
+		let result = queryURLParams('http://www.zhufengpeixun.cn/?lx=1&name=JS&from=baidu#video');
+		console.log(result); */
+
+		/* <!-- 
+		<a href="http://www.zhufengpeixun.cn/?lx=1&name=JS&from=baidu#video" id="link">
+
+		在JS中获取的A元素对象，包含很多内置属性，存储对于HREF地址的解析：
+			search:'?lx=1&name=JS&from=baidu',
+			hash:'#video',
+			host:'www.zhufengpeixun.cn',
+			...
+		--> */
+	</script>
+
+	<script>
+		// 咱们正式课讲完正则，大家就会了
+		/* (proto => {
+			function queryURLParams() {
+				let obj = {};
+				this.replace(/([^?=&#]+)=([^?=&#]+)/g, (_, key, value) => obj[key] = value);
+				this.replace(/#([^?=&#]+)/g, (_, hash) => obj['HASH'] = hash);
+				return obj;
+			}
+			proto.queryURLParams = queryURLParams;
+		})(String.prototype);
+
+		console.log('http://www.zhufengpeixun.cn/?lx=1&name=JS&from=baidu#video'.queryURLParams()); */
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var arr = [100,200,300,400];
+    //1100,1200,1300,1400
+    var newArr = arr.map(item=>{
+        return item+=1000
+    });
+    console.log(newArr);
+    
+    var bol = arr.some((item,index)=>{
+        // console.log(item);
+        
+        return item>600;
+    })
+    var bol2 = arr.some((item,index)=>{
+        console.log(item);
+        
+        return item >200
+    })
+    console.log(bol,bol2);
+
+
+     var bol = arr.every((item,index)=>{
+        console.log("11",item);
+        
+        return item>600;
+    })
+    var bol2 = arr.every((item,index)=>{
+        console.log("22",item);
+        
+        return item >200
+    })
+    console.log(bol,bol2);
+        
+    </script>
+</body>
+</html>

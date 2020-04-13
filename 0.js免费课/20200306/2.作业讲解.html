@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		/* for (var i = 0; i < 10; i++) {
+			console.log(i); //=>0
+			break;
+		}
+		console.log(i); //=>0 */
+
+		/* for (var i = 0; i < 10; i++) {
+			continue; //=>结束本轮循环（循环体中continue下面代码不在执行，继续累加执行下一轮）
+			console.log(i);
+		}
+		console.log(i); //=>10 */
+
+		/* for (var i = 1; i <= 10; i += 2) {
+			if (i <= 5) {
+				i++;
+				continue;
+			} else {
+				i -= 2;
+				break;
+			}
+			i--;
+			console.log(i);
+		}
+		console.log(i); //=>5 */
+
+		// 造成了死循环：一直在加载
+		/* for (var i = 3; i < 12; i++) {
+			if (i < 3) {
+				i++;
+				break;
+			}
+			if (i > 9) {
+				i += 2;
+				continue;
+			}
+			i--;
+		}
+		console.log(i); */
+	</script>
+
+	<script>
+		// 条件?成立:不成立;
+		/* let a = 12;
+		// if (a >= 0 && a <= 20) {
+		// 	if (a % 2 === 0) {
+		// 		a += 2;
+		// 	}
+		// } else {
+		// 	a -= 2;
+		// }
+		a >= 0 && a <= 20 ? (a % 2 === 0 ? a += 2 : null) : a -= 2;
+		console.log(a); //=>14 */
+	</script>
+
+	<script>
+		// == 比较的时候，如果左右两边数据类型不一致则先转换为相同的类型，再比较
+		// '10' == 10  TRUE
+		// let a = '10';
+		// a == 10 ? a++ : a--;  
+		// console.log(a);
+		/*
+		 * a++ 和 a+=1 和 a=a+1 都是在自身基础上累加1，但是a++浏览器会给其做特殊处理（会把其转换为数字再进行累加）
+		 *    a++  => a=Number(a)+1
+		 *    a+=1 => a=a+1
+		 */
+
+		/* let b = '10';
+		switch (b) {
+			case 10: //=>每一种case都是===进行比较的  '10'===10  FALSE
+				b++;
+				break;
+			default:
+				b--;
+		}
+		console.log(b); //=>9 */
+	</script>
+
+	<script>
+		// !(!"Number(undefined)");
+		/* 
+		 * ""  ''  `` 都是字符串   => "Number(undefined)"就是一个字符串
+		 *   !"Number(undefined)" 转换为布尔在取反  => false
+		 *   !false  => true
+		 */
+
+		// isNaN(parseInt(new Date())) + Number([1]) + typeof undefined;​
+		/*
+		 * + 是最后计算的，先把每一项的值都算出来，最后相加
+		 *     isNaN(parseInt(new Date()))  从最里层开始逐一向外层计算
+		 *        new Date() => 当前本机日期（对象）
+		 *        parseInt(对象) => parseInt("Fri Mar 06 2020 11:43:18 GMT+0800") =>NaN
+		 *        isNaN(NaN) => true
+		 *     Number([1]) 
+		 *         Number("1") =>1
+		 *     typeof undefined
+		 *         =>"undefined"
+		 * true + 1 + "undefined"
+		 *    true + 1 => 2
+		 *    2 + "undefined" => "2undefined"
+		 */
+
+
+		// Boolean(Number("")) + !isNaN(Number(null)) + Boolean("parseInt([])") + typeof !(null);​
+		/*
+		 * Boolean(Number(""))
+		 *    Number("") => 0
+		 *    Boolean(0) => false
+		 * !isNaN(Number(null))
+		 *    Number(null) => 0
+		 *    isNaN(0) => false
+		 *    !false => true
+		 * Boolean("parseInt([])")
+		 *    "parseInt([])" 他是一个字符串，并不是转换数字啥的
+		 *    => true
+		 * typeof !(null)
+		 *     !(null) => true
+		 *     typeof true => "boolean"
+		 * false + true + true + "boolean"  => "2boolean"
+		 */
+
+		// parseFloat("1.6px") + parseInt("1.2px") + typeof parseInt(null);​
+		/*
+		 * parseFloat("1.6px") => 1.6
+		 * parseInt("1.2px") => 1
+		 * typeof parseInt(null)
+		 *    parseInt(null) => parseInt('null') => NaN
+		 *    typeof NaN => "number"
+		 * 1.6 + 1 + "number" => '2.6number'
+		 */
+
+		// isNaN(Number(!!Number(parseInt("0.8"))));​
+		/*
+		 * parseInt("0.8") => 0
+		 * !!Number(0) => false
+		 * Number(false) => 0
+		 * isNaN(0) => false
+		 */
+
+		// console.log(1 + "2" + "2");​
+		/*
+		 *  '122'
+		 */
+
+		// !typeof parseFloat("0");​
+		/*
+		 *  parseFloat("0") => 0
+		 *  typeof 0 => "number"
+		 *  !"number" => false
+		 */
+
+		// Number("");​
+		/* 0 */
+
+		// typeof "parseInt(null)" + 12 + !!Number(NaN);​
+		/*
+		 * typeof "parseInt(null)" => "string"
+		 * 12
+		 * !!Number(NaN) => false
+		 * => "string12false"
+		 */
+
+		// !typeof (isNaN("")) + parseInt(NaN);​
+		/* 
+		 * !typeof (isNaN(""))
+		 *    isNaN("") => isNaN(Number("")) => isNaN(0) => false
+		 *    typeof false => "boolean"
+		 *    !"boolean" => false
+		 * parseInt(NaN)
+		 *    parseInt(String(NaN)) => parseInt('NaN') => NaN
+		 * false + NaN => NaN
+		 */
+
+		// typeof !parseInt(null) + !isNaN(null);
+		/*
+		 *  typeof !parseInt(null)
+		 *     parseInt(null) => parseInt('null') => NaN
+		 *     !NaN => true
+		 *     typeof true => "boolean"
+		 *  !isNaN(null)
+		 *     isNaN(null) => isNaN(Number(null)) => isNaN(0) => false
+		 *     !false => true
+		 *  "boolean" + true => "booleantrue" 
+		 */
+	</script>
+</body>
+
+</html>

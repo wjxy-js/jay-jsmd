@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * 两个值的比较：
+		 *   == 左右两边数据类型不一致，先默认转换为一致的，在进行比较
+		 *   ===
+		 *   Object.is 
+		 */
+
+		/*
+		 * 基于==进行比较的时候，左右两边数据类型不一致，隐式转换规则 
+		 *    NaN==NaN   =>false   NaN和任何值（包含自己本身）都不相等
+		 *    Infinity==Infinity  =>true  Infinity只和自己相等，和其它值都不相等
+		 *    Symbol(1) == Symbol(1)  =>false
+		 *    对象 == 对象   比较的是内存地址
+		 * 
+		 *    null==undefined  =>true  null和undefined两个等号比较是相等的，三个等号比较是不相等的，除此之外，他们和任何值相比较都不相等
+		 *    对象==字符串  对象转换为字符串
+		 *    
+		 *    除上述规则外，其余的都是把值转换为数字类型，然后再比较
+		 */
+		/* console.log([10] == '10'); //=>'10'=='10'   true
+		console.log({} == '{}'); //=>'[object Object]'=='{}'  false
+		console.log(1 == true); //=>1==1   true
+		console.log(2 == true); //=>2==1   false
+		console.log(-1 == false); //=>-1==0  false
+		console.log(0 == false); //=>0==0  true
+		console.log(1 == '1'); //=>1==1  true
+		console.log(true == '1'); //=>1==1  true  
+		console.log(false == ''); //=>0==0  true
+		console.log([] == 0); //=>0==0 true */
+	</script>
+</body>
+
+</html>

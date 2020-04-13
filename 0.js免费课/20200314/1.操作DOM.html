@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+	<style>
+		.active {
+			color: red;
+			background-color: lightblue;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+		<h2 class="title">新闻标题</h2>
+		<ul class="item" id="itemBox">
+			<li class="noLine">我是第1条新闻</li>
+			<li>我是第2条新闻</li>
+			<li class="noLine">我是第3条新闻</li>
+			<li>我是第4条新闻</li>
+			<li>我是第5条新闻</li>
+		</ul>
+	</div>
+	<div class="noLine" name="AAA">我是外面的DIV</div>
+	<input type="text" name="AAA">
+
+	<!-- IMPORT JS -->
+	<script>
+		// 或者.ITEM这个UL
+		// document.getElementById('itemBox');
+		// document.getElementsByTagName('ul')[0];
+		// document.getElementsByClassName('item')[0];
+
+		// querySelector不管匹配的结果有多少个，都只获得第一个（元素对象）
+		// #itemBox  .item  ul  ...
+		// let itemBox = document.querySelector('ul');
+		// console.log(itemBox);
+
+		// querySelectorAll获取的都是集合（哪怕只有一项也是集合）
+		// let navList = document.querySelectorAll('#itemBox li');
+		// console.log(navList);  
+	</script>
+
+
+	<script>
+		/*
+		// 获取整个页面中所有具备 noLine 样式类的元素
+		// let noLines = document.getElementsByClassName('noLine');
+		// console.log(noLines); //=>[li,li,div]
+
+		// 获取到的结果是元素集合，不管集合中有几项，它都是集合
+		let item = document.getElementsByClassName('item');
+		item = item[0]; //=>获取集合中的第一项（这才是我们要操作的ITEM元素对象）
+		let noLines = item.getElementsByClassName('noLine');
+		console.log(noLines); //=>[li,li] 
+		*/
+
+		/* 
+		var AAAS = document.getElementsByName('AAA');
+		console.log(AAAS); //=>[div,input]  IE9 [input] 真实项目中也是基于它操作表单元素的，尤其是单选框或者复选框
+		 */
+	</script>
+
+	<script>
+		/* let itemBox = document.getElementById('itemBox'),
+			navList = itemBox.getElementsByTagName('li'); */
+		// console.dir(itemBox); //=>它是一个对象：itemBox.xxx=xxx
+		// console.dir(navList); //=>它是一个元素集合HTMLCollection（类数组集合：数字作为索引，LENGTH代表长度），集合中的每一项是单独的元素对象  navList[0].xxx=xxx
+
+		//===========设置样式
+		/* itemBox.style.color = 'red';
+		itemBox.style.backgroundColor =
+		'green'; //=><ul class="item" id="itemBox" style="color: red; background-color: green;"> 设置的结果都是行内样式
+		itemBox.style.cssText = `color: red; background-color: green;`; 这种方式是STYLE一个个设置样式的简写，批量给行内上设置很多样式 */
+
+		/* itemBox.className = 'active'; //=>CLASSNAME这样操作会把之前的样式类名给覆盖掉
+		itemBox.className += ' active'; //=>这样也可以，记得加空格区分每个样式类
+		itemBox.classList.add('active'); //=>向指定样式集合中新增一个样式类（兼容性差） */
+	</script>
+</body>
+
+</html>

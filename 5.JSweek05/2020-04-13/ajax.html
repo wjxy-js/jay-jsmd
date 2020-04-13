@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+    <h2>zhufeng</h2>
+    <button>按钮</button>
+<body>
+    <script src="./jquery-3.3.1.js"></script>
+    <script>
+        // $.ajax({
+        //     url: "data.json",
+        //     method: "get",
+        //     success: function (data) {
+        //         //请求成功的回调函数
+        //         console.log(data);
+                
+        //     }
+        // })
+
+    </script>
+    <script>
+    $('button').on("click",function(){
+        // $('h2').hide()//r让标签隐藏
+        // $('h2').show()//让标签显示
+        $('h2').toggle();//若元素是显示状态 就让元素隐藏 若隐藏就显示
+
+    })
+    
+    
+    </script>
+</body>
+
+</html>

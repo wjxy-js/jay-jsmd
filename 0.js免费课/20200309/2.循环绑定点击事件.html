@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+	<link rel="stylesheet" href="reset.min.css">
+	<style>
+		button {
+			padding: 5px 10px;
+			margin: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- button*5{按钮$} -->
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+	<button>按钮4</button>
+	<button>按钮5</button>
+
+	<!-- IMPORT JS -->
+	<script>
+		var btnList = document.getElementsByTagName('button');
+
+		// 其它解决方案
+		/* for (var i = 0; i < btnList.length; i++) {
+			(function (i) {
+				btnList[i].onclick = function () {
+					alert(`当前点击这个按钮的索引是：${i}`);
+				};
+			})(i);
+		} */
+
+		/* for (let i = 0; i < btnList.length; i++) {
+			btnList[i].onclick = function () {
+				alert(`当前点击这个按钮的索引是：${i}`);
+			};
+		} */
+
+		/* [].forEach.call(btnList, (item, index) => {
+			item.onclick = function () {
+				alert(`当前点击这个按钮的索引是：${index}`);
+			};
+		}); */
+
+		// 自定义属性解决方案
+		for (var i = 0; i < btnList.length; i++) {
+			var item = btnList[i];
+			// 给当前每一个BUTTON元素对象设置一个自定义属性index，存储它的索引
+			item.index = i;
+			item.onclick = function () {
+				// 点击的时候基于自定义属性获取到元素的索引
+				alert(`当前点击这个按钮的索引是：${this.index}`);
+			};
+		}
+
+		/*
+		 * 这样实现不了：最后不论点击哪个按钮，都输出5 
+		 *    在循环给每一个按钮的onclick事件绑定方法的时候，都是创建一个函数，然后赋值给onclick，但此时方法没有执行，只是创建，所以函数所对应的堆内存中存储的都是“代码字符串 "alert(`当前点击这个按钮的索引是：${i}`);" ”
+		 *    循环继续，循环结束后，全局的i=5
+		 *    当我们点击某个按钮的时候，执行对应的函数，此时把之前存储的代码字符串变为代码执行  alert(`当前点击这个按钮的索引是：${i}`)，需要用到变量i的值，但是此时i的值已经是循环结束后的5了
+		 */
+		/* for (var i = 0; i < btnList.length; i++) {
+			btnList[i].onclick = function () {
+				alert(`当前点击这个按钮的索引是：${i}`);
+			};
+		} */
+	</script>
+
+	<script>
+		var name = 10;
+		var obj = {
+			name: '珠峰培训'
+		};
+		console.log(obj.name);
+		//=>“对象.属性”  属性不能为数字  获取OBJ中属性名为NAME的属性值 =>"珠峰培训"
+
+		console.log(obj['name']);
+		//=>“对象[属性]”  获取OBJ中属性名为NAME的属性值
+
+		console.log(obj[name]);
+		//=>此处的NAME不是值，它是一个变量，所以此处的意思是：把NAME变量存储的值10作为属性，从OBJ中进行获取  =>obj[10] =>而OBJ对象中不存在属性为10的属性，所以属性值是undefined
+	</script>
+</body>
+
+</html>

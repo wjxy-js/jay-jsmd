@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			user-select: none;
+		}
+
+		.codeBox {
+			box-sizing: border-box;
+			margin: 20px;
+			width: 100px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			border: 1px solid lightcoral;
+			cursor: pointer;
+			font-size: 20px;
+			letter-spacing: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- <div class="codeBox" id="codeBox"></div> -->
+
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * 思路：一加载页面，就生成四位验证码，放置到CODEBOX盒子中；当我们点击CODEBOX盒子的时候，需要重新生成四位验证码，放置到盒子中！ 
+		 * 四位验证码规则：随机获取数字+字母（大小写）四位即可
+		 */
+		// let codeBox = document.getElementById('codeBox');
+
+		/* 创建验证码，并把其放在CODEBOX盒子中 */
+		/* function createCode() {
+			let area = '0123456789QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm',
+				codeText = '';
+			for (let i = 1; i <= 4; i++) {
+				let ran = Math.round(Math.random() * (61 - 0) + 0),
+					char = area.charAt(ran);
+				codeText += char;
+			}
+			codeBox.innerHTML = codeText;
+		} */
+
+		// 加载页面就执行一次
+		// createCode();
+
+		// 点击CODEBOX盒子重新生成（此处函数后面不能加小括号，因为我们不是立即把函数执行，而是想让点击的时候才执行）
+		// codeBox.onclick = createCode;
+
+
+		/* // 验证码的取值范围（索引范围：0~61）
+		let area = '0123456789QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm';
+		// 随机获取四个（Math.random()）：随机获取四个0~61之间的索引值，基于这个值到AREA范围中取四个字符，拼成我们需要的四位验证码即可
+		let codeText = '';
+		for (let i = 1; i <= 4; i++) {
+			// 每一次循环获取一个随机的索引
+			let ran = Math.round(Math.random() * (61 - 0) + 0);
+			// 基于索引获取对应的字符
+			let char = area.charAt(ran);
+			// 拼接到结果中
+			codeText += char;
+		}
+		console.log(codeText); */
+	</script>
+
+	<script>
+		(function () {
+			let area = '0123456789QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm';
+			let codeText = '';
+
+			// 当前需求下，到底循环多少次就已经不再是准确的了
+			/* for (let i = 1; i <= 4;) {
+				let ran = Math.round(Math.random() * (61 - 0) + 0);
+				let char = area.charAt(ran);
+				// 拼接之前，首先判断获取的字符CHAR在原始字符串中是否已经存在，不存在我们在拼接进来看，只要存在就不去拼接（大小写字母一样也算重复 =>不论你现在是大写还是小写，反正我们都是转换为大写，然后判断存不存在的）
+				if (!codeText.toUpperCase().includes(char.toUpperCase())) {
+					codeText += char;
+					i++;
+				}
+			} */
+
+			// 对于不确定具体循环次数的循环，我们一般用while循环
+			// while(条件){ }  只要条件成立就会一直循环
+			while (codeText.length < 4) {
+				let ran = Math.round(Math.random() * (61 - 0) + 0),
+					char = area.charAt(ran);
+				if (!codeText.toUpperCase().includes(char.toUpperCase())) {
+					codeText += char;
+				}
+			}
+			console.log(codeText);
+		})();
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * 1.创建函数：把实现某个功能的代码封装在一起
+		 *   function 函数名(形参1,...){
+		 *	     //=>函数体：实现具体功能的代码
+		 *   }   
+		 *
+		 * 2.执行函数：让函数执行，从而实现具体的功能 
+		 *   函数名(实参1,...);
+		 *   函数名(实参1,...);
+		 *   ...
+		 * 函数的意义在于封装：把实现某一个功能的代码封装在一起，后期在想实现这个功能，只需要执行函数即可，不需要重新编写这些代码了 “低耦合、高内聚”	 
+		 */
+
+
+		/* let time1 = '2020/03/07 11:37:00';
+		let arr = time1.match(/\d+/g);
+		time1 = '{0}年{1}月{2}日'.replace(/\{(\d+)\}/g, (_, num) => {
+			return arr[num];
+		});
+		console.log(time1);
+
+		let time2 = "1998-12-18 00:00:00"; //=>"12-18 00:00"
+		let arr2 = time2.match(/\d+/g);
+		time2 = '{1}-{2} {3}:{4}'.replace(/\{(\d+)\}/g, (_, num) => {
+			return arr2[num];
+		});
+		console.log(time2);
+
+		// .... */
+
+
+		/* // 创建一个函数（创建一个洗衣机）：把时间格式化的操作全部封装成为一个函数，代码统一封装起来
+		function formatTime(time, templete = "{0}年{1}月{2}日 {3}时{4}分{5}秒") {
+			let timeAry = time.match(/\d+/g);
+			return templete.replace(/\{(\d+)\}/g, (...[, $1]) => {
+				let time = timeAry[$1] || "00";
+				return time.length < 2 ? "0" + time : time;
+			});
+		}
+
+		// 执行函数（运行洗衣机）
+		let time1 = '2020/03/07 11:37:00';
+		let time2 = "1998-12-18 00:00:00";
+		console.log(formatTime(time1, '{0}年{1}月{2}日'));
+		console.log(formatTime(time2, '{1}-{2} {3}:{4}'));
+		console.log(formatTime(time1)); */
+
+		// 项目中，发现一个功能要重新运行两次及两次以上，此时我们就把这个功能封装成为一个函数，以后再想实现这个功能，直接把函数执行即可
+		/* // 1.创建函数
+		function func() {
+			console.log('我会玩函数了!');
+		}
+		// 2.执行函数
+		func();
+		func(); */
+
+
+		// ================================求两个数的和
+		// 函数中有一个形参和实参的概念
+		// 形参：生产一个函数，想要实现一些功能，但是实现功能，需要的原材料不确定，需要用户执行它的是够给我，我才知道，此时我们就提供入口   => 形参（变量）
+		// 实参：执行函数的时候，给指定的入口（形参变量）传递的具体值（值）
+
+		/* function sum(x, y) {
+			// 创建函数的时候，并不知道要求哪两个数字的和，此时可以定义形参变量
+			// =>x和y就是形参变量
+			let total = x + y;
+			console.log(total);
+		}
+		sum(10, 20); //=>x=10  y=20是实参（给形参变量传递的具体值）
+		sum(1, 10); //=>x=1  y=10
+		sum(10); //=>x=10  y=undefined 定义了形参，但是执行的时候不给传递实参，则形参默认值undefined */
+	</script>
+</body>
+
+</html>

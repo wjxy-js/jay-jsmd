@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+
+
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * 在JS中用 单引号/双引号/反引号 包起来的都是字符串 
+		 * 
+		 * 把其它数据类型转换为字符串类型
+		 *   + String([value])
+		 *   + [value].toString()
+		 * 普通对象转换为字符串都是 "[object Object]"，数组对象转换为字符串是 "第一项,第二项..."（逗号分隔数组中的每一项）
+		 * 
+		 * 在JS中常用的数学运算
+		 *    数学运算：+ - * / 加减乘除
+		 *    %（膜）取余数
+		 * 除了加法以外，其余的情况都是数学运算（如果遇到非数字类型，需要基于Number把其强制转换为数字类型，然后在进行运算的）；加号在JS中既有数学运算，也有字符串拼接的意思（只要加号两边的任意一边出现字符串，则变为字符串拼接）；
+		 */
+		/* console.log(3 - "3px"); //=>NaN
+		console.log(3 + "3px"); //=>"33px"  字符串拼接
+		console.log(1 + "1"); //=>"11" 字符串拼接
+		console.log(1 + {}); //=>"1[object Object]"  在把{}转换为数字过程中，先把他转换为字符串"[object Object]"，此时右侧出现了字符串，则不再是数学运算，而是字符串拼接了
+		console.log(1 + []); //=>'1'
+		console.log([10] + true); //=>"10true"  在转换[10]到数字的过程中，先把其转换为字符串"10"，此时操作变为字符串拼接(和数学运算没关系了)
+		console.log(true + [10]); //=>"true10"
+		console.log(1 + true); //=>2 */
+
+		// console.log(4 / 2); //=>除  2
+		// console.log(7 / 3); //=>除  2.3333333333333335
+		// console.log(7 % 3); //=>取余  1
+
+		// console.log(10 - null); //=>10
+		// console.log(3 * undefined); //=>NaN
+		// console.log(true - "12"); //=>1-12 =>-11
+
+		// console.log(100 + true + 21.2 + null + undefined + "Tencent" + [] + null + 9 + false);
+		/* 
+		 100 + true => 101
+		 101 + 21.2 => 122.2
+		 122.2 + null => 122.2
+		 122.2 + undefined => NaN 
+		 NaN + "Tencent" => "NaNTencent"  字符串拼接（以后都是字符串拼接）
+		 "NaNTencent" + [] => "NaNTencent"
+		 "NaNTencent" + null => "NaNTencentnull"
+		 "NaNTencentnull" + 9 => "NaNTencentnull9"
+		 "NaNTencentnull9" + false => "NaNTencentnull9false"
+		 */
+	</script>
+
+	<script>
+		// 真实项目中经常把一些变量的值拼接到指定的字符串中
+		// 完成字符串拼接处理：2020年03月03日 12:00:00
+		let year = '2020';
+		let month = '03';
+		let day = '03';
+		let hours = '12';
+		let minutes = '00';
+		let seconds = '00';
+
+		// ES6中的模板字符串就是为了解决传统字符串拼接中的问题（反引号 TAB上面的撇）：${}中存放变量或者其它的JS表达式即可，很简单的完成字符串拼接
+		let result = `${year}年${month}月${day}日 ${hours}:${minutes}:${seconds}`;
+		console.log(result);
+
+		// let str='<div class="box" id="box">';
+		// str+='<h2 class="title">哈哈</h2>';
+		// str+='<ul class="item">';
+		// str+='<li></li>';
+		// // ....
+
+		/* let str = `<div class="box" id="box">
+			<h2 class="title">哈哈</h2>
+			<ul class="item">
+				${[10,20,30].map(item=>{
+					return `<li>${item}</li>`;
+				}).join('')}
+			</ul>
+		</div>`;
+		console.log(str); */
+
+
+		// 传统的拼接方式，我们需要在字符串中基于 "++" 或者 '++' 的方式把变量拼接到字符串中（这种方式涉及很多恶心的规则，一不留神就容易拼错）
+		// let result = year + "年" + month + "月" + day + "日 " + hours + ":" + minutes + ":" + seconds;
+		// let result = "" + year + "年" + month + "月日 ::";
+		// console.log(result);
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*  ===============================
+    作业：
+    数组有一个slice方法  arr.slice(n,m)  可以从索引n开始，找到索引为m处（不包含m），找到的以新数组返回
+    特殊情况：
+    1. n/m只传递一个或者都不传递
+    2. n/m是负数
+    3. n/m是小数
+    4. n/m是非有效数字
+    5. n/m的大小超过最大长度
+    6. 如果m<=n咋办
+    ….
+    
+        
+        */
+
+        Array.prototype.mySlice = function mySlice(m,n) {
+            // n/m只传递一个或者都不传递
+            m = m ? Number(m) : 0;
+            n = n ? Number(n) : this.length;
+            // console.log(m, n);
+            //n/m是小数
+            m = parseFloat(Math.floor(m))
+            n = parseFloat(Math.floor(n))
+
+            // n/m是负数
+            m < 0 ? m += this.length : m
+            n < 0 ? n += this.length : n
+            //n/m的大小超过最大长度
+            n > this.length ? n = this.length : n
+
+            let newAry = [];
+            if (m + this.length > n + this.length) {
+                return []
+            }
+            for (var i = m; i < n; i++) {
+                newAry[newAry.length] = this[i]
+            }
+            return newAry
+        }
+        let arr = [1, 2, 3, 4, 5, 6,]
+        console.log(arr.slice(1, 5));
+        console.log(arr.mySlice(1, 5));
+
+    </script>
+</body>
+
+</html>

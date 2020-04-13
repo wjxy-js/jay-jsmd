@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		/* 时间字符串格式化：把一个时间日期字符串转化为我们想要的格式 */
+		// =>"2020年03月11日 14时10分00秒"
+		// let time = '2020/3/11 14:10:0';
+
+		/* 1.把原始字符串中代表时间的值都获取到，最后拼接成为我们想要的即可 */
+		/* let arr = time.split(' '); //=>["2020/3/11", "14:10:0"]
+		let arrLeft = arr[0].split('/'); //=>["2020", "3", "11"]
+		let arrRight = arr[1].split(':'); //=>["14", "10", "0"]
+		// 在拼接之前，需要把ARRLEFT和ARRRIGHT中不足两位的数字，前面补充零
+		arrLeft = arrLeft.map(function (item) {
+			return item.length < 2 ? '0' + item : item;
+		});
+		arrRight = arrRight.map(item => item.length < 2 ? '0' + item : item);
+		time = `${arrLeft[0]}年${arrLeft[1]}月${arrLeft[2]}日 ${arrRight[0]}时${arrRight[1]}分${arrRight[2]}秒`;
+		console.log(time); */
+
+		/* let arr = time.split(' '); //=>["2020/3/11", "14:10:0"]
+		let arrLeft = arr[0].split('/'); //=>["2020", "3", "11"]
+		let arrRight = arr[1].split(':'); //=>["14", "10", "0"]
+		arr = arrLeft.concat(arrRight); //=>["2020", "3", "11", "14", "10", "0"]
+		arr = arr.map(item => item.length < 2 ? '0' + item : item);
+		time = `${arr[0]}年${arr[1]}月${arr[2]}日 ${arr[3]}时${arr[4]}分${arr[5]}秒`;
+		console.log(time); */
+
+		/* let time = '2020/3/11 14:10:0';
+		// let arr = time.split(/(?: |\/|:)/g); //=>["2020", "3", "11", "14", "10", "0"]
+		let arr = time.match(/\d+/g); //=>["2020", "3", "11", "14", "10", "0"]
+		arr = arr.map(item => item.length < 2 ? '0' + item : item);
+		time = `${arr[0]}年${arr[1]}月${arr[2]}日 ${arr[3]}时${arr[4]}分${arr[5]}秒`;
+		console.log(time); */
+
+		// 不足十位补充零的操作封装为一个方法
+		/* function zero(val) {
+			return val.length < 2 ? '0' + val : val;
+		}
+		let time = '2020/3/11 14:10:0';
+		let arr = time.split(/(?: |\/|:)/g); //=>["2020", "3", "11", "14", "10", "0"]
+		time = `${arr[0]}年${zero(arr[1])}月${zero(arr[2])}日 ${zero(arr[3])}时${zero(arr[4])}分${zero(arr[5])}秒`;
+		console.log(time); */
+
+		/* 2.直接基于replace替换 */
+		/* let time = '2020/3/11 14:10:0';
+		time = time.replace('/', '年').replace('/', '月').replace(' ', '日 ').replace(':', '时').replace(':', '分') + '秒';
+		console.log(time); //=>没有实现不足十位数字的补充零 */
+
+		/* 3.直接正则处理 */
+		// 封装一个公共的，万能的时间格式化的方法（此方法暂时不需要你们会，正式课咱们还会讲）
+		/* (proto => {
+			function formatTime(template = '{0}年{1}月{2}日 {3}时{4}分{5}秒') {
+				let arr = this.match(/\d+/g);
+				return template.replace(/\{(\d+)\}/g, (_, n) => {
+					let item = arr[n] || '0';
+					item.length < 2 ? item = '0' + item : null;
+					return item;
+				});
+			}
+			proto.formatTime = formatTime;
+		})(String.prototype);
+
+		let time = '2020-3-11 14:10:0';
+		console.log(time.formatTime());
+		console.log(time.formatTime('{1}-{2} {3}:{4}'));
+		console.log(time.formatTime('{0}年{1}月{2}日')); */
+	</script>
+</body>
+
+</html>

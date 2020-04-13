@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		// 基本数据类型：number string boolean null undefined symbol BigInt
+		// 引用数据类型：object（普通对象、数组对象、正则对象、日期对象...） function
+		/*
+		 * JS中的数据类型检测：
+		 *    + tyepof [value]  检测数据类型的运算符
+		 *    + [example] instanceof [class]  检测某一个实例是否属于这个类
+		 *    + [example].constructor===[class] 检测实例和类关系的，从而检测数据类型
+		 *    + Object.prototype.toString.call([value]) 检测数据类型
+		 * 
+		 * typeof的细节点：
+		 *    + typeof 检测的结果首先是一个字符串，字符串中包含了对应的数据类型（例如："number"、
+		 "string"、"boolean"、"undefined"、"object"、"function"、"symbol"、"bigint"）
+		 *    + 特殊的检测结果：
+		 *      + NaN / Infinity 都是数字类型的，检测出来的结果是 "number"
+		 *      + typeof null 的结果是 "object"（这个是浏览器的BUG：所有的值在计算中都已二进制编码存储，浏览器中把前三位是000的当做对象，而null的二进制前三位就是000，所以被识别为对象，但是它不是对象，它是空对象指针，是基本类型值）
+		 *      + typeof 普通对象/数组对象/正则对象... 结果都是"object"，这样就无法基于typeof区分是普通对象还是数组对象等了
+		 */
+
+		// =>百度和腾讯的面试题
+		// console.log(typeof []); //=>"object"
+		// console.log(typeof typeof typeof []); //=>"string" 由于typeof返回的结果永远是一个字符串（字符串中包含了对应的类型），所以连续出现两个及两个以上typeof检测的时候，最后结果都是 "string"
+
+		// 已知有一个变量x，但是我们无法确认其数据类型，我们需要有一个判断操作：当x的类型是对象的时候（什么对象都可以），则处理对应的事情
+		// if (typeof x == "object") { //=>null检测结果也会是"object"，所以结果是"object"不一定是对象，还可能是null呢
+		// 	// ...
+		// }
+		if (x != null && typeof x == "object") {
+			// ...
+		}
+
+
+
+
+
+
+
+
+
+
+		//  正式课中我们会剖析JQ源码，根据源码自己封装一款数据类型检测的方法
+		/* let _type = (function () {
+			var _obj = {
+				isNumeric: "Number",
+				isBoolean: 'Boolean',
+				isString: 'String',
+				isNull: 'Null',
+				isUndefined: 'Undefined',
+				isSymbol: 'Symbol',
+				isPlainObject: 'Object',
+				isArray: 'Array',
+				isRegExp: 'RegExp',
+				isDate: 'Date',
+				isFunction: "Function",
+				isWindow: 'Window'
+			};
+
+			var _type = {},
+				_toString = _type.toString;
+			for (var key in _obj) {
+				if (!_obj.hasOwnProperty(key)) break;
+				_type[key] = (function () {
+					var reg = new RegExp("^\\[object " + _obj[key] + "\\]$");
+					return function anonymous(val) {
+						return reg.test(_toString.call(val));
+					}
+				})();
+			}
+			return _type;
+		})(); */
+	</script>
+</body>
+
+</html>

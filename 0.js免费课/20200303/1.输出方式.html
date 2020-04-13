@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+	<style>
+		#box {
+			width: 200px;
+			height: 200px;
+			border: 1px solid lightcoral;
+			background: lightblue;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="box">
+		<h1>哈哈</h1>
+	</div>
+
+	<input type="text" id="userName">
+
+	<!-- IMPORT JS -->
+	<script>
+		// 想要操作哪个元素，就先获取到哪个元素：我们可以根据元素的ID获取到这个元素对象
+		// document.getElementById：document限定在整个文档中（上下文） get获取  Element元素  By通过（在整个文档中，基于元素的ID获取到这个元素）
+
+		/*
+		 *  innerHTML/innerText：向指定容器中插入内容（插入的信息也会变为字符串再插入）
+		 *    + 基于这两种方式会把之前容器中的内容给覆盖掉，想要追加，则采用+=的方式
+		 *    + innerHTML能够把标签文本进行识别和渲染，而innerText会把所有内容都当做普通的文本
+		 */
+		// let box = document.getElementById('box');
+		// box.innerHTML = "珠峰";  //=>覆盖原始的所有内容
+		// box.innerText = "培训";
+		// box.innerHTML += "珠峰"; //=>在原始内容上继续增加
+		// box.innerText += "培训";
+		// box.innerHTML = "<strong>我是重点内容</strong>";
+		// box.innerText = "<strong>我是重点内容</strong>";
+
+		// 给页面中的文本框赋值
+		// let userName = document.getElementById('userName');
+		// userName.value = "我是在JS中插入的内容";
+
+		// 把内容写入到页面中：和alert一样，写入的内容最后都会转换为字符串，然后在写入
+		/* document.write('AA');
+		document.write(10);
+		document.write({
+			name: '珠峰'
+		}); //=>"[object Object]" */
+	</script>
+
+	<script>
+		// =>在控制台输出，特点是：输出任意数据类型的数据，控制台展示的也是对应的数据类型
+		// console.log({
+		// 	name: '珠峰'
+		// });
+
+		// =>console.dir输出一个对象或者一个值的详细信息；console.log可以一次性输出多个值，但是dir不可以；
+		// function func() {}
+		// console.log(func, 100, 300);
+		// console.dir(func);
+
+		// =>console.warn以警告的方式输出
+		// console.warn('当前操作不规范!');
+
+		// =>console.table把多维的JSON数据以表格形式输出
+		// let arr = [{
+		// 	id: 1,
+		// 	name: '珠峰培训'
+		// }, {
+		// 	id: 2,
+		// 	name: '周啸天'
+		// }];
+		// console.table(arr);
+
+		// =>计算出time/timeEnd中间所有程序执行所消耗的时间（预估时间：受到当前电脑性能的影响）
+		// console.time('AA');
+		// for (let i = 0; i < 99999999; i++) {}
+		// console.timeEnd('AA'); //=>AA: 218.3701171875ms
+
+
+		//==============================
+		// =>alert是在浏览器窗口中弹出一个提示框，提示框中输出指定的信息
+		// + 需要等到alert弹出框，点击确定关闭后，后面的代码才会继续执行（alert会阻碍主线程的渲染）
+		// + alert弹出的内容都会默认转换为字符串（toString）
+
+		// alert('今天大家都很帅！');
+		// console.log(100);
+		// alert([10, 20, 30]); //=>数组转换为字符串的结果 "10,20,30"
+		// alert({name:'珠峰'}); //=>普通对象转换为字符串的结果 "[object Object]"
+
+		// =>confirm相对于alert来说，给用户提供了确定和取消两种选择
+		// + 创建一个变量，用来接收用户选择的结果  true点击的是确定  false点击的是取消
+		// let flag = confirm('今天大家都好好学了吗？');
+		// console.log(flag);
+
+		// =>prompt在confirm的基础上给用户提供书写操作的原因等信息
+		// + 点击的是取消，返回结果是null；点击的是确定，会把用户输入的原因信息返回；
+		// let reason = prompt('确定要删除此信息吗？');
+		// console.log(reason);
+	</script>
+</body>
+
+</html>

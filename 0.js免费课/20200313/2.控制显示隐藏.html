@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+	<link rel="stylesheet" href="reset.min.css">
+	<style>
+		.box {
+			margin: 20px auto;
+			width: 300px;
+		}
+
+		.box .btn {
+			padding: 5px 10px;
+		}
+
+		.box .codeImg {
+			padding: 10px;
+			height: 50px;
+			border: 1px solid #EEE;
+			background: lightcyan;
+			display: none;
+		}
+
+		.box .codeImg.active {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+		<button id="btn" class="btn">按钮</button>
+		<div id="codeImg" class="codeImg active">
+			二维码
+		</div>
+	</div>
+
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * 点击BTN按钮，控制CODEIMG盒子显示隐藏（也就是控制是否拥有ACTIVE样式类，有这个样式类就显示，否则就隐藏即可） => 当前盒子显示则让其隐藏，当前隐藏则让其显示即可
+		 */
+		let btn = document.getElementById('btn');
+		let codeImg = document.getElementById('codeImg');
+		btn.onclick = function () {
+			// 获取CODEIMG盒子的样式类
+			let classText = codeImg.className;
+			if (classText.includes('active')) {
+				// 当前是显示的，我们让其隐藏
+				codeImg.className = 'codeImg';
+			} else {
+				// 当前是隐藏的，我们让其显示
+				codeImg.className = 'codeImg active';
+			}
+		};
+	</script>
+</body>
+
+</html>

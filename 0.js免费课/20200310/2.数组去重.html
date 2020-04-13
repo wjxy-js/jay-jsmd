@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * 数组去重的方式（12种）：去除数组中的重复项
+		 *   1.双FOR循环（拿当前项和后面的每一项进行比较，重点：数组塌陷和SPLICE删除的优化）
+		 *   2.对象的键值对方式 
+		 */
+
+		// let arr = [1, 1, 1, 2, 2, 3, 2, 2, 1, 2, 3, 2, 1, 2, 2, 3];
+
+		/*
+		 * 方案1：依次遍历数组中的每一项，拿当前项和其“后面”的每一项进行比较，如果还有面中有和他相同的，则说明这是这是重复的，我们把后面中重复的这一项删除掉即可 
+		 */
+
+		//====外层循环控制每一次拿出一项和其后面的比
+		//  i < arr.length - 1 最后一项不需要再拿出来了，因为每一次都是和当前项后面的比较，而最后一项后面没有任何的东西，所以也就没有必要再拿出来比较了
+		/* for (let i = 0; i < arr.length - 1; i++) {
+			// 每一次拿出来要和后面依次比较的那一项
+			let item = arr[i];
+			//====里层循环控制和当前项后面的每一项逐一比较
+			// let j = i + 1 从当前项的后一项开始逐一比较即可
+			for (let j = i + 1; j < arr.length; j++) {
+				if (item === arr[j]) {
+					// 当前项和后面中的某一项相等了，此时我们把后面中的这一项从原始数组中删除掉
+					arr.splice(j, 1);
+					j--; //=>删除完，先让j--，然后在j++，相当于没加没减，下一轮还是从当前索引开始比较，这样防止数组塌陷带来的问题
+				}
+			}
+		} */
+
+		/* for (let i = 0; i < arr.length - 1; i++) {
+			let item = arr[i];
+			for (let j = i + 1; j < arr.length; j++) {
+				if (item === arr[j]) {
+					// 用最后一项替换当前项
+					arr[j] = arr[arr.length - 1];
+					// 最后一项删掉
+					arr.length--;
+					// 下一轮还和这一项比（因为这一项已经变为最新的最后一项了）
+					j--;
+				}
+			}
+		}
+		console.log(arr); */
+
+
+		// let arr = [1, 2, 3, 1, 1, 4, 2, 3];
+		// for (let i = 0; i < arr.length - 1; i++) {
+		// 	let item = arr[i];
+		// 	for (let j = i + 1; j < arr.length; j++) {
+		// 		if (arr[j] === item) {
+		// 			// 后面某项值和当前项相等了：直接删除
+		// 			/* arr.splice(j, 1);
+		// 			j--; */
+
+		// 			// 原始数组中的顺序会变化，但是不会导致索引前置这种情况（性能好）
+		// 			arr[j] = arr[arr.length - 1];
+		// 			arr.length--;
+		// 			j--;
+		// 		}
+		// 	}
+		// }
+		// console.log(arr);
+	</script>
+
+	<script>
+		/*
+		 * 方案二：对象键值对的方式 
+		 *    1.只有一个循环，所以性能很好
+		 *    2.如果数组中出现对象则存在问题（因为对象的属性名不能是对象，遇到会转换为字符串）；如果数组中存在数字10和字符串'10'，则也会认为是重复的（对象中的属性名是数字和字符串没啥区别）；数组中的值如果是undefined可能也会出现问题....
+		 */
+		/* let arr = [1, 2, 3, 1, 1, 4, 2, 3];
+		let obj = {};
+		for (let i = 0; i < arr.length; i++) {
+			// 把每一次循环得到的当前项，作为对象的属性名和属性值存储进去
+			let item = arr[i];
+			if (obj[item] !== undefined) {
+				// 证明对象中有这个属性（也就是之前存储过，数组中之前就有这个值），当前值是重复的，我们需要把当前这项的值删掉即可
+				arr[i] = arr[arr.length - 1];
+				arr.length--;
+				i--;
+				continue;
+			}
+			obj[item] = item;
+		}
+		console.log(arr); */
+	</script>
+
+	<script>
+		/* ES6中没有提供现成的去重办法，但是提供了一些去重的方式 ：Set数据结构*/
+		let obj = {
+			y: 200
+		};
+		let arr = [obj, 1, 2, 3, 1, obj, 1, 4, 2, 3, '3', {
+			x: 100
+		}, {
+			x: 100
+		}];
+		arr = Array.from(new Set(arr));
+		console.log(arr);
+	</script>
+</body>
+
+</html>

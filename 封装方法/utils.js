@@ -2,14 +2,14 @@
  * UTILS中集合了我们以后项目中经常会使用的方法 
  */
 let utils = (function () {
-	/* function getCss(element, attr) {
+	function getCss(element, attr) {
 		let value = window.getComputedStyle(element)[attr],
 			reg = /^\d+(px|rem|em)?$/i;
 		if (reg.test(value)) {
 			value = parseFloat(value);
 		}
 		return value;
-	} */
+	}
 
 	function setCss(element, attr, value) {
 		if (attr === "opacity") {
@@ -27,12 +27,12 @@ let utils = (function () {
 		element['style'][attr] = value;
 	}
 
-	/* function setGroupCss(element, options) {
+	function setGroupCss(element, options) {
 		for (let key in options) {
 			if (!options.hasOwnProperty(key)) break;
 			setCss(element, key, options[key]);
 		}
-	} */
+	}
 
 	function css(element) {
 		let len = arguments.length,
@@ -43,11 +43,11 @@ let utils = (function () {
 			setCss(element, attr, value);
 			return;
 		}
-		// if (attr !== null && typeof attr === "object") {
-		// 	// 批量设置
-		// 	// setGroupCss(element, attr);
-		// 	// return;
-		// }
+		if (attr !== null && typeof attr === "object") {
+			// 批量设置
+			setGroupCss(element, attr);
+			return;
+		}
 		// 获取样式
 		return getCss(element, attr);
 	}

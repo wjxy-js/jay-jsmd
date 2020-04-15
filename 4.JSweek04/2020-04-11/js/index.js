@@ -98,18 +98,18 @@ let cascadeFlowModule = (function () {
     }
     //加载更多数据
     let isRender;
-    let loadMoreData = function loadMoreData(){
-            let HTML = document.documentElement;
-            //一屏幕的高度+卷曲高度+半屏高度>=真实高度
-                if(HTML.clientHeight*1.5 +HTML.scrollTop >= HTML.scrollHeight){
-                    //加载更多数据:获取数据+继续绑定数据 + 新绑定的数据做一下延迟加载
-                    if(isRender)return;
-                    isRender = true;
-                    queryData();
-                    bindHTML();
-                    lazaFunc();
-                    isRender = false;
-                }
+    let loadMoreData = function loadMoreData() {
+        let HTML = document.documentElement;
+        //一屏幕的高度+卷曲高度+半屏高度>=真实高度
+        if (HTML.clientHeight * 1.5 + HTML.scrollTop >= HTML.scrollHeight) {
+            //加载更多数据:获取数据+继续绑定数据 + 新绑定的数据做一下延迟加载
+            if (isRender) return;
+            isRender = true;
+            queryData();
+            bindHTML();
+            lazaFunc();
+            isRender = false;
+        }
     }
     return {
         init() {

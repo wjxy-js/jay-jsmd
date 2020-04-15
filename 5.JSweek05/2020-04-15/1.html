@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{
+        color: yellow;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="box">哈哈哈哈</div>
+    <div class="box">哈哈哈哈</div>
+    <div class="box">哈哈哈哈</div>
+    <script src="../2020-04-14/瀑布流/jquery-3.3.1.js"></script>
+    <script>
+        //当前没有声明的变量
+        // typeof 一个为被声明的变量 不会报错=>undefined 暂时性死区问题
+        // let boxs = document.querySelectorAll(".box");
+        // [].forEach.call(boxs,item=>{
+        //     item.classList.add = 'box';
+        // })
+        $.each([10,20,30],function(index,item){
+            console.log(index);
+            console.log(this);
+            
+            
+        })
+    </script>
+</body>
+</html>

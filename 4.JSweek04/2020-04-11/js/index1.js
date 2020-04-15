@@ -16,8 +16,6 @@ let cascadeFlowModule = (function () {
         xhr.send();
         // console.log(data);
     }
-
-
     //实现数据绑定
     let bindHTML = function bindHTML() {
         //循环数据,并且真实的窗口宽度是230
@@ -60,7 +58,7 @@ let cascadeFlowModule = (function () {
 					</div>
 					<p>${title}</p>
                 </a>`;
-                //把card根据索引放到colums中
+                //把card根据索引放到columns中
                 columns[index].appendChild(card);
             })
         }
@@ -72,7 +70,7 @@ let cascadeFlowModule = (function () {
         //转换成数组 循环每一项
         [].forEach.call(lazyImageBoxs, lazyImageBox => {
             //处理过的盒子就不要再处理了 获取行间属性
-            let isLoad = lazyImageBox.getAttribute('isLoad');
+            let isLoad = lazyImageBox.getAttribute('isLoad') 
             //如果为true 则返回
             if (isLoad === "true") return;
             // 获取lazyImageBox一半的位置距离BODY顶端的距离
@@ -90,7 +88,7 @@ let cascadeFlowModule = (function () {
     }
     //
     let lazyImg = function lazyImg(lazyImageBox) {
-        //获取图片
+       // 单张加载处理
         let img = lazyImageBox.querySelector('img'),
             //获取图片的行间属性
             dataImage = img.getAttribute('data-image'),
@@ -114,7 +112,7 @@ let cascadeFlowModule = (function () {
         //滚动到底部了
         let HTML = document.documentElement;
         if (HTML.clientHeight * 1.5 + HTML.scrollTop >= HTML.scrollHeight) {
-            if (isRendber) return;
+            if (isRender) return;
             isRender = true;
             queryData();
             bindHTML();
